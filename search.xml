@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>OTSU</title>
+      <link href="/posts/311baf7/"/>
+      <url>/posts/311baf7/</url>
+      
+        <content type="html"><![CDATA[<h1 id="OTSU"><a href="#OTSU" class="headerlink" title="OTSU"></a>OTSU</h1><blockquote><p>论文：<a href="https://ieeexplore.ieee.org/document/4310076">A Threshold Selection Method from Gray-Level Histograms</a></p></blockquote><p>OTSU算法也称<strong>最大类间差法</strong>，有时也称之为大津算法，由大津于1979年提出，被认为是图像分割中阈值选取的最佳算法，计算简单，不受图像亮度和对比度的影响，因此在数字图像处理上得到了广泛的应用。它是按图像的灰度分布特性,将图像分成背景(background)和目标(object)两部分。考虑到方差是灰度分布均匀性的一种度量,理想情况下，对于同一类，其类内方差应该是很小的，同时背景和目标之间的类间方差越大,说明构成图像的两部分的差别越大,当部分目标错分为背景或部分背景错分为目标都会导致两部分差别变小。因此,使类间方差最大的分割意味着错分概率最小。</p><p>该方法的基本思想是根据选取的阈值将图像分为目标和背景两个部分，<strong>通过最大化类间方差（最小化类内方差），自动确定最佳分割阈值</strong></p><h1 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h1><p>假设一幅灰度图像，其灰度级为 (0 \sim L-1)。</p><h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h1 id="底层代码"><a href="#底层代码" class="headerlink" title="底层代码"></a>底层代码</h1><hr><p>参考：<br><a href="https://www.bilibili.com/video/BV1cM8we3EVf?vd_source=59c9078be8272e804fcbbcf1da9a9f94">10.8 大津法（OTSU）（数字图像处理，冈萨雷斯版）</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 图像处理 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> OpenCV </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SVD分解</title>
       <link href="/posts/undefined/"/>
       <url>/posts/undefined/</url>
