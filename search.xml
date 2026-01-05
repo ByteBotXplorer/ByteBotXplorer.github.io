@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>伪代码</title>
+      <link href="/posts/ce589481/"/>
+      <url>/posts/ce589481/</url>
+      
+        <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>伪代码(Pseudocode)是一种算法描述语言。使用伪代码的目的是为了使被描述的算法可以容易地以任何一种编程语言(C, Java, Pascal)实现。因此，伪代码必须结构清晰，代码简单，可读性好，并且类似自然语言。</p><p><strong>伪代码的优点</strong></p><ul><li><p>提高任何方法的可读性。这是开始实现算法的最佳方法之一。</p></li><li><p>充当程序与算法或流程图之间的桥梁。也可以作为一个粗略的文档，因此当写出伪代码时，可以很容易地理解一个开发人员的程序。在行业中，文档是必不可少的。这就是证明伪代码至关重要的地方。</p></li><li><p>伪代码的主要目标是解释程序的每一行应该做什么，从而使程序员更容易构建代码构建阶段。</p></li></ul><h1 id="语法规则"><a href="#语法规则" class="headerlink" title="语法规则"></a>语法规则</h1><ul><li>在伪代码中，<strong>每一条指令占一行</strong>(else if 例外)，指令后不跟任何符号；</li><li><strong>“缩进”</strong> 表示程序中的分支程序结构（同一模块的语句有相同的缩进量，次一级模块的语句相对与其父级模块的语句缩进）；</li><li>通常每个算法开始时都要描述它的输入和输出，而且算法中的每一行都给编上行号，在解释算法的过程中会经常使用算法步骤中的行号来指代算法的步骤；</li><li>每一行可以加上编号（也可不加）。</li></ul><h2 id="变量的声明"><a href="#变量的声明" class="headerlink" title="变量的声明"></a>变量的声明</h2><p>算法中出现的数组、变量可以是：整数、实数、字符、字符串、指针。在注释中给出定义。</p><h2 id="指令的表示"><a href="#指令的表示" class="headerlink" title="指令的表示"></a>指令的表示</h2><p>在</p><hr><blockquote><p>参考<br><a href="https://www.cnblogs.com/linuxAndMcu/p/11242905.html">https://www.cnblogs.com/linuxAndMcu/p/11242905.html</a></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>KNN</title>
       <link href="/posts/7c10b52f/"/>
       <url>/posts/7c10b52f/</url>
