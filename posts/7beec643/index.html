@@ -1,0 +1,288 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>边缘计算 | bytebot的blog</title><meta name="author" content="ByteBotXplorer"><meta name="copyright" content="ByteBotXplorer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="什么是边缘计算边缘计算是一种致力于使计算尽可能靠近数据源、以减少延迟和带宽使用的网络理念，是一种把数据处理、存储等任务放到 “靠近数据源的边缘节点”（而不是全集中在云端）的技术架构。简而言之，边缘计算意味着在云端运行更少的进程，将这些进程移动到本地，例如用户的计算机、IoT 设备或边缘服务器。将计算放到网络边缘可以最大程度地减少客户端和服务器之间必须进行的长距离通信量。  网络边缘：对于互联网设备">
+<meta property="og:type" content="article">
+<meta property="og:title" content="边缘计算">
+<meta property="og:url" content="http://example.com/posts/7beec643/index.html">
+<meta property="og:site_name" content="bytebot的blog">
+<meta property="og:description" content="什么是边缘计算边缘计算是一种致力于使计算尽可能靠近数据源、以减少延迟和带宽使用的网络理念，是一种把数据处理、存储等任务放到 “靠近数据源的边缘节点”（而不是全集中在云端）的技术架构。简而言之，边缘计算意味着在云端运行更少的进程，将这些进程移动到本地，例如用户的计算机、IoT 设备或边缘服务器。将计算放到网络边缘可以最大程度地减少客户端和服务器之间必须进行的长距离通信量。  网络边缘：对于互联网设备">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/imgs/GEM/gem1.png">
+<meta property="article:published_time" content="2026-01-06T11:58:28.000Z">
+<meta property="article:modified_time" content="2026-01-06T12:15:33.421Z">
+<meta property="article:author" content="ByteBotXplorer">
+<meta property="article:tag" content="-IT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/imgs/GEM/gem1.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "边缘计算",
+  "url": "http://example.com/posts/7beec643/",
+  "image": "http://example.com/imgs/GEM/gem1.png",
+  "datePublished": "2026-01-06T11:58:28.000Z",
+  "dateModified": "2026-01-06T12:15:33.421Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "ByteBotXplorer",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/posts/7beec643/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":500,"languages":{"author":"Author: ByteBotXplorer","link":"Link: ","source":"Source: bytebot的blog","info":"Copyright belongs to the author. For commercial use, please contact the author for authorization. For non-commercial use, please indicate the source."}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '边缘计算',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/imgs/background/%E8%9C%A1%E7%AC%94%E5%B0%8F%E6%96%B0.jpeg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/imgs/GEM/gem1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: transparent;"><nav id="nav"><!-- 左侧博客信息区域--><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">bytebot的blog</span></a><a class="nav-page-title" href="/"><span class="site-name">边缘计算</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">边缘计算</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-01-06T11:58:28.000Z" title="Created 2026-01-06 19:58:28">2026-01-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-01-06T12:15:33.421Z" title="Updated 2026-01-06 20:15:33">2026-01-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/IT/">IT</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>6mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id data-flag-title><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="什么是边缘计算"><a href="#什么是边缘计算" class="headerlink" title="什么是边缘计算"></a>什么是边缘计算</h1><p>边缘计算是一种致力于使计算尽可能靠近数据源、以减少延迟和带宽使用的网络理念，是一种<strong>把数据处理、存储等任务放到 “靠近数据源的边缘节点”</strong>（而不是全集中在云端）的技术架构。简而言之，边缘计算意味着在云端运行更少的进程，将这些进程移动到本地，例如用户的计算机、<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.cloudflare.com/learning/cloud/what-is-the-cloud/">IoT 设备</a>或<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.cloudflare.com/learning/ddos/glossary/internet-of-things-iot/">边缘服务器</a>。将计算放到网络边缘可以最大程度地减少<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.cloudflare.com/learning/serverless/glossary/client-side-vs-server-side/">客户端和服务器</a>之间必须进行的长距离通信量。</p>
+<blockquote>
+<p>网络边缘：<br>对于互联网设备，网络边缘是设备或包含设备的本地网络与互联网通信的位置。边缘是个比较模糊的术语。例如，可以将用户的计算机或 IoT 摄像头内部的处理器视为网络边缘，但也可以将用户的路由器、ISP 或本地边缘服务器视为边缘。重要的是，网络边缘在地理位置上靠近设备，与<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.cloudflare.com/learning/cdn/glossary/origin-server/">源站</a>和云服务器不同，后者可能与它们相互通信的设备相距很远。</p>
+</blockquote>
+<h1 id="边缘计算与其他计算模型"><a href="#边缘计算与其他计算模型" class="headerlink" title="边缘计算与其他计算模型"></a>边缘计算与其他计算模型</h1><p><strong>最早期的计算机</strong>是巨大笨重的机器，只能直接访问或通过终端访问，这些终端基本上是计算机的扩展。随着<strong>个人计算机</strong>的发明，计算可以用一种更加分散的方式进行。曾几何时，个人计算是占主导地位的计算模式。应用程序在本地运行，数据存储于用户的设备上，有时在本地数据中心内。</p>
+<p><strong>云计算</strong>是更新的发展，与这种基于本地的计算相比，它提供了许多优势。云服务集中在供应商管理的“云”(或数据中心的集合)中，可以从互联网上的任何设备访问。</p>
+<p>但是，由于用户与托管云服务的数据中心之间的距离，云计算可能会引入<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency/">延迟</a>。<strong>边缘计算</strong>使计算更接近最终用户，以最小化数据必须传输的距离，同时仍然保留云计算的集中化性质。</p>
+<p>总而言之：</p>
+<ul>
+<li>早期计算：集中式应用程序，仅在一台孤立的计算机上运行</li>
+<li>个人计算：本地运行的去中心化应用程序</li>
+<li>云计算：在数据中心运行的集中式应用程序</li>
+<li>边缘计算：在靠近用户的地方——设备本身或者网络边缘——运行的集中式应用程序</li>
+</ul>
+<h1 id="边缘计算应用"><a href="#边缘计算应用" class="headerlink" title="边缘计算应用"></a>边缘计算应用</h1><h2 id="安全系统监控"><a href="#安全系统监控" class="headerlink" title="安全系统监控"></a>安全系统监控</h2><p><strong>让摄像头本地运行运动检测程序</strong>，只把“有活动的视频片段”传到云服务器，而不是全量传原始视频。</p>
+<p> 解决的问题：既省了大量带宽（不用传没动静的冗余视频），又减轻了云服务器的处理/存储负载，还能更快响应异常情况。  </p>
+<h2 id="IoT设备"><a href="#IoT设备" class="headerlink" title="IoT设备"></a>IoT设备</h2><p>比如智能音箱、智能门锁这类设备：<strong>把简单的指令处理代码放到设备本地运行</strong>，不用每次都把数据传到云端再等结果。 </p>
+<p>举个例子：智能音箱收到“调低音量”的指令，本地直接执行操作，不用等云端解析反馈；智能门锁本地识别指纹/密码，不用连网才能开门。 </p>
+<p>解决的问题：交互延迟大幅降低，设备响应更流畅，甚至断网时基础功能也能正常用。  </p>
+<h2 id="自动驾驶汽车"><a href="#自动驾驶汽车" class="headerlink" title="自动驾驶汽车"></a>自动驾驶汽车</h2><p>自动驾驶依赖摄像头、雷达等传感器的实时数据：<strong>把决策代码放到汽车自带的车载计算单元（边缘节点）本地运行</strong>，不用等数据传到云端处理再发指令。</p>
+<p> 比如遇到突然窜出的行人，车载计算单元能毫秒级完成“识别→判断→刹车”的流程；要是等云端指令，延迟早就让事故发生了。 </p>
+<p>解决的问题：满足自动驾驶的“实时响应”刚需，保障行驶安全。  </p>
+<h2 id="更高效的缓存（结合CDN）"><a href="#更高效的缓存（结合CDN）" class="headerlink" title="更高效的缓存（结合CDN）"></a>更高效的缓存（结合CDN）</h2><p> CDN是分布在各地的“边缘服务器”（本来是存图片、视频的），边缘计算让它不仅能存内容，还能<strong>本地运行代码自定义缓存逻辑</strong>。</p>
+<p>比如视频网站，会根据你所在的区域、常看的内容，让你附近的CDN边缘服务器提前缓存你可能要看的片段；你打开视频时，直接从近的边缘服务器拿内容，不用从遥远的云服务器拉取。 </p>
+<p>解决的问题：内容加载速度更快，也省了跨区域传输的带宽。  </p>
+<h2 id="医疗监控设备"><a href="#医疗监控设备" class="headerlink" title="医疗监控设备"></a>医疗监控设备</h2><p>比如重症病人的心率监护仪、呼吸机：<strong>把“异常数据检测”的代码放到设备本地运行</strong>，不用等数据传到云端再判断报警。</p>
+<p>比如心率突然超标时，设备本地直接触发报警，同时再把数据同步到云；要是等云端反馈，可能耽误抢救时机。 </p>
+<p>解决的问题：满足医疗场景的“实时响应”刚需，避免关键信息延迟。  </p>
+<h2 id="视频会议"><a href="#视频会议" class="headerlink" title="视频会议"></a>视频会议</h2><p>多人视频会议的视频流很占带宽：<strong>把“视频压缩、流转发”的进程放到离参会者近的边缘节点运行</strong>，而不是全传到云端集中处理。 </p>
+<p>比如你在北京开会，视频流先传到北京的边缘节点压缩、转发，不用传到千里之外的云服务器再分发。 </p>
+<p>解决的问题：减少数据传输的距离和带宽消耗，会议延迟更低、更流畅。 </p>
+<h1 id="边缘计算优势"><a href="#边缘计算优势" class="headerlink" title="边缘计算优势"></a>边缘计算优势</h1><ul>
+<li>减少延迟</li>
+<li>减少带宽使用和相关成本</li>
+<li>减少服务器资源消耗和相关成本</li>
+<li>增加功能</li>
+</ul>
+<h2 id="节省成本"><a href="#节省成本" class="headerlink" title="节省成本"></a>节省成本</h2><p>边缘计算有助于最大程度地减少带宽使用量和服务器资源消耗。带宽和云资源是有限的，并且需要花费成本。Statista <a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.statista.com/statistics/471264/iot-number-of-connected-devices-worldwide/">预测</a>，随着每个家庭和办公室都配备智能相机、打印机、温度调节装置甚至烤面包机，到 2025 年，全球将安装超过 750 亿个 IoT 设备。为了支持所有这些设备，必须将大量计算移到边缘。</p>
+<h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><p>将流程移至边缘的另一个重要优势是减少延迟。设备每次需要与某处的远程服务器通信时，都会造成延迟。例如，同一办公室中的两个同事在 IM 平台上聊天可能会遇到相当大的延迟，因为设备必须将每条消息路由到建筑物外，与全球某处的服务器通信，然后再传回，最后才能出现在收信人的屏幕上。如果将该过程放到边缘，并且由公司的内部路由器负责传输办公室内的聊天记录，则不会出现明显的延迟。</p>
+<p>同样，当各种 Web 应用的用户遇到必须与外部服务器进行通信的进程时，他们将感受到延迟。这些延迟的持续时间将根据可用带宽和服务器的位置而变化，但是可以通过将更多进程引入网络边缘来完全避免这些延迟。</p>
+<h2 id="新功能"><a href="#新功能" class="headerlink" title="新功能"></a>新功能</h2><p>此外，边缘计算可以提供以前无法提供的新功能。例如，公司可以使用边缘计算在边缘处理和分析数据，使得实时处理成为可能。</p>
+<p>完全减轻额外硬件需求的一种方法是利用边缘服务器。例如，借助 Cloudflare 分散在全球各地的 330 个边缘服务器组成的网络，Cloudflare 的客户可以使用 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.cloudflare.com/products/cloudflare-workers/">Cloudflare Workers</a> 在全球范围内运行边缘代码。</p>
+<h1 id="边缘计算缺点"><a href="#边缘计算缺点" class="headerlink" title="边缘计算缺点"></a>边缘计算缺点</h1><p>边缘计算的一个缺点是会增加<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.cloudflare.com/learning/security/glossary/attack-vector/">攻击媒介</a>。随着更多“智能”设备的加入，例如具有强大内置计算机的边缘服务器和 IoT 设备，给恶意攻击者带来入侵这些设备的新机会。</p>
+<p>边缘计算的另一个缺点是它需要更多的本地硬件。例如，虽然 IoT 摄像头需要内置计算机才能将原始视频数据发送到 Web 服务器，但如果要运行自己的运动检测算法，就需要一台功能更强大、有更大处理能力的复杂计算机。但是，硬件成本的下降使得构建更智能设备的成本变得更为低廉。</p>
+<hr>
+<blockquote>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.cloudflare.com/zh-cn/learning/serverless/glossary/what-is-edge-computing/">https://www.cloudflare.com/zh-cn/learning/serverless/glossary/what-is-edge-computing/</a></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">ByteBotXplorer</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/posts/7beec643/">http://example.com/posts/7beec643/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/IT/">-IT</a></div><div class="post-share"><div class="social-share" data-image="/imgs/GEM/gem1.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/9fbcc97b/" title="相机"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">相机</div></div><div class="info-2"><div class="info-item-1">特种相机（一）—— 多光谱相机（基础篇）  光谱波段光学领域中基于电磁波波长范围划分的光谱波段，广泛应用于计算机视觉、遥感、机器人感知（包括 SLAM）等领域。     波段名称 波长范围 能量范围 核心特性 典型应用     伽马射线（γ） &lt; 0.01 nm &gt; 124 keV 能量极高，穿透能力极强，可电离物质 核物理、天体物理、医疗放疗   伦琴射线（X 射线） 0.01 nm ~ 10 nm 124 eV ~ 124 keV 能量高，穿透能力强，可穿透人体和金属 医学成像、工业无损检测、安检   紫外线（UV） 10 nm ~ 400 nm 3.1 eV ~ 124 eV 能量高于可见光，可使荧光物质发光，具有杀菌作用，易被臭氧层吸收 紫外成像、杀菌消毒、光刻技术   可见光（VIS） 400 nm ~ 700 nm 1.77 eV ~ 3.1 eV 人类肉眼可见，是传统视觉的核心波段，纹理信息丰富 普通 RGB 相机、SLAM、机器视觉   红外线（IR） 700 nm ~ 1 mm 1.24 meV ~ 1.77 eV 肉眼不可见，具有热辐射特性，按波长...</div></div></div></a><a class="pagination-related" href="/posts/ce589481/" title="伪代码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">伪代码</div></div><div class="info-2"><div class="info-item-1">简介伪代码(Pseudocode)是一种算法描述语言。使用伪代码的目的是为了使被描述的算法可以容易地以任何一种编程语言(C, Java, Pascal)实现。因此，伪代码必须结构清晰，代码简单，可读性好，并且类似自然语言。 伪代码的优点  提高任何方法的可读性。这是开始实现算法的最佳方法之一。  充当程序与算法或流程图之间的桥梁。也可以作为一个粗略的文档，因此当写出伪代码时，可以很容易地理解一个开发人员的程序。在行业中，文档是必不可少的。这就是证明伪代码至关重要的地方。  伪代码的主要目标是解释程序的每一行应该做什么，从而使程序员更容易构建代码构建阶段。   语法规则 在伪代码中，每一条指令占一行(else if 例外)，指令后不跟任何符号； “缩进” 表示程序中的分支程序结构（同一模块的语句有相同的缩进量，次一级模块的语句相对与其父级模块的语句缩进）； 通常每个算法开始时都要描述它的输入和输出，而且算法中的每一行都给编上行号，在解释算法的过程中会经常使用算法步骤中的行号来指代算法的步骤； 每一行可以加上编号（也可不加）。  变量的声明算法中出现的数组、变量可以是：整数、实数、字...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/imgs/GEM/gem1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info-name">ByteBotXplorer</div><div class="author-info-description">相见即缘分</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/ShaoHLeon"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/ShaoHLeon" target="_blank" title="Github" rel="external nofollow noopener noreferrer"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/1293939883" target="_blank" title="Bilibili" rel="external nofollow noopener noreferrer"><i class="fab fa-bilibili" style="color: #00A1D6;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97"><span class="toc-number">1.</span> <span class="toc-text">什么是边缘计算</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E4%B8%8E%E5%85%B6%E4%BB%96%E8%AE%A1%E7%AE%97%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">边缘计算与其他计算模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E5%BA%94%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">边缘计算应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7"><span class="toc-number">3.1.</span> <span class="toc-text">安全系统监控</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IoT%E8%AE%BE%E5%A4%87"><span class="toc-number">3.2.</span> <span class="toc-text">IoT设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E6%B1%BD%E8%BD%A6"><span class="toc-number">3.3.</span> <span class="toc-text">自动驾驶汽车</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E9%AB%98%E6%95%88%E7%9A%84%E7%BC%93%E5%AD%98%EF%BC%88%E7%BB%93%E5%90%88CDN%EF%BC%89"><span class="toc-number">3.4.</span> <span class="toc-text">更高效的缓存（结合CDN）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BB%E7%96%97%E7%9B%91%E6%8E%A7%E8%AE%BE%E5%A4%87"><span class="toc-number">3.5.</span> <span class="toc-text">医疗监控设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E4%BC%9A%E8%AE%AE"><span class="toc-number">3.6.</span> <span class="toc-text">视频会议</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E4%BC%98%E5%8A%BF"><span class="toc-number">4.</span> <span class="toc-text">边缘计算优势</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%82%E7%9C%81%E6%88%90%E6%9C%AC"><span class="toc-number">4.1.</span> <span class="toc-text">节省成本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD"><span class="toc-number">4.2.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%8A%9F%E8%83%BD"><span class="toc-number">4.3.</span> <span class="toc-text">新功能</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E7%BC%BA%E7%82%B9"><span class="toc-number">5.</span> <span class="toc-text">边缘计算缺点</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/830e646c/" title="python开发模式安装">python开发模式安装</a><time datetime="2026-01-08T15:12:29.952Z" title="Updated 2026-01-08 23:12:29">2026-01-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/df30c197/" title="频谱混叠">频谱混叠</a><time datetime="2026-01-08T13:14:28.327Z" title="Updated 2026-01-08 21:14:28">2026-01-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2da7df34/" title="单位超球面">单位超球面</a><time datetime="2026-01-08T12:52:21.667Z" title="Updated 2026-01-08 20:52:21">2026-01-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/6073489d/" title="SLAM">SLAM</a><time datetime="2026-01-08T03:38:40.629Z" title="Updated 2026-01-08 11:38:40">2026-01-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c325d296/" title="FAST-LIO">FAST-LIO</a><time datetime="2026-01-08T03:16:21.673Z" title="Updated 2026-01-08 11:16:21">2026-01-08</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By ByteBotXplorer</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="输入关键词…" type="text"></div><hr><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.3"></script></div></div></body></html>
