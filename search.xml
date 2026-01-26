@@ -4,6 +4,169 @@
   
     
     <entry>
+      <title>皮亚诺公理体系</title>
+      <link href="/posts/7c0b9456/"/>
+      <url>/posts/7c0b9456/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Math </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>最优化基础——基本概念</title>
+      <link href="/posts/6356d855/"/>
+      <url>/posts/6356d855/</url>
+      
+        <content type="html"><![CDATA[<h1 id="凸集、凸函数"><a href="#凸集、凸函数" class="headerlink" title="凸集、凸函数"></a>凸集、凸函数</h1><ul><li><p>凸集：假设集合 $X \subseteq \mathbb{R}^n$，如果对于任意两点 $ \mathbf{x}_1, \mathbf{x}_2 \in X$ 和 $\alpha \in (0, 1)$，总有 $\alpha \cdot \mathbf{x}_1 + (1 - \alpha) \cdot \mathbf{x}_2 \in X$ （点$\mathbf{x}_1$和点$\mathbf{x}_2$连线任意一点），则 $X$ 是凸集合。</p></li><li><p>非凸集合</p></li></ul><p><img src="data:image/png;base64,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" alt=""></p><ul><li>凸函数：假设集合 $X \subseteq \mathbb{R}$，并且 $f : \mathbb{X} \rightarrow \mathbf{R}$，如果对于任意两个点 $\mathbf{x}_1, \mathbf{x}_2 \in \mathbb{X}$ 和 $\alpha \in (0, 1)$，总有 $f[\alpha \cdot \mathbf{x}_1 + (1 - \alpha) \cdot \mathbf{x}_2] \le \alpha \cdot f(\mathbf{x}_1) + (1 - \alpha) \cdot f(\mathbf{x}_2) $，则称 $f$ 是在 $X$ 的凸函数，上述取 $&lt;$ 时则称 $f$ 是 $\mathbb{X}$上的严格凸函数。</li></ul><p><img src="data:image/jpeg;base64,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" alt=""></p><ul><li>凹函数：假设集合 $X \subseteq \mathbb{R}$，并且 $f : \mathbb{X} \rightarrow \mathbf{R}$，如果对于任意两个点 $\mathbf{x}_1, \mathbf{x}_2 \in \mathbb{X}$ 和 $\alpha \in (0, 1)$，总有 $f[\alpha \cdot \mathbf{x}_1 + (1 - \alpha) \cdot \mathbf{x}_2] \geq \alpha \cdot f(\mathbf{x}_1) + (1 - \alpha) \cdot f(\mathbf{x}_2) $，则称 $f$ 是在 $X$ 的凹函数，上述取 $&gt;$ 时则称 $f$ 是 $\mathbb{X}$上的严格凸函数。</li><li>非凸非凹函数</li></ul><h1 id="凸优化、非凸优化"><a href="#凸优化、非凸优化" class="headerlink" title="凸优化、非凸优化"></a>凸优化、非凸优化</h1><p>优化问题：</p><script type="math/tex; mode=display">\begin{aligned}\min &\ f(\mathbf{x}) \\\text{s.t.} &\ \mathbf{x} \in \mathbf{C}\end{aligned}</script><p>如果 $\mathbf{C}$ 是凸集，且目标函数 $f(\mathbf{x})$ 是 $\mathbf{C}$ 上的凸函数，则称这样的优化问题是<strong>凸优化问题</strong>。</p><p>凸优化问题性质：</p><ol><li>凸优化的局部极小点就是全局极小点；</li><li>如果目标函数是严格凸函数，则凸优化问题具有唯一的全局极小点；</li><li>凸优化的全局极大点必定能在可行域的边界上达到。</li></ol><h1 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h1><p>设函数 $f : \mathbb{R}^n \rightarrow \mathbb{R}, \mathbf{x} \in \mathbb{R}^n$。如果 $f$ 关于点 $\mathbf{x} = (x_1, x_2, \dots, x_n )$ 各分量的一阶导数 $\frac{ \partial f(\mathbf{x}) }{\partial x_i}(i = 1, 2, \dots, n)$ 都存在，则称函数 $f$ 在点 $\mathbf{x}$ 处一阶可导，并称向量</p><script type="math/tex; mode=display">\nabla f(\mathbf{x}) = \left[ \frac{\partial f(\mathbf{x})}{\partial x_1} \quad \frac{\partial f(\mathbf{x})}{\partial x_2} \quad \dots \frac{\partial f(\mathbf{x})}{\partial x_n} \right]</script><p>为 $f$ 在 $\mathbf{x}$ 处的梯度向量。</p><h1 id="Jacobi矩阵、Hessian矩阵"><a href="#Jacobi矩阵、Hessian矩阵" class="headerlink" title="Jacobi矩阵、Hessian矩阵"></a>Jacobi矩阵、Hessian矩阵</h1><h2 id="Jacobi矩阵"><a href="#Jacobi矩阵" class="headerlink" title="Jacobi矩阵"></a>Jacobi矩阵</h2><p>设函数 $ f : \mathbb{R}^n \rightarrow \mathbb{R}^m $。如果函数 $ f = (f_1, f_2, \dots, f_m) $ 的各个分量关于点 $\mathbf{x} = (x_1, x_2, \dots, x_n)$ 各个分量的一阶导数 $\frac{\partial f_j(\mathbf{x})}{\partial x_i}(i = 1, 2, \dots n; \quad j = 1, 2, \dots, m)$ 都存在，则称矩阵</p><script type="math/tex; mode=display">Df(\mathbf{x}) = \begin{bmatrix}\frac{\partial f_1(\mathbf{x})}{\partial x_1} & \frac{\partial f_1(\mathbf{x})}{\partial x_2} & \dots & \frac{\partial f_1(\mathbf{x})}{\partial x_n} \\\frac{\partial f_2(\mathbf{x})}{\partial x_1} & \frac{\partial f_2(\mathbf{x})}{\partial x_2} & \dots & \frac{\partial f_2(\mathbf{x})}{\partial x_n} \\\vdots & \vdots & \ddots & \vdots \\\frac{\partial f_m(\mathbf{x})}{\partial x_1} & \frac{\partial f_m(\mathbf{x})}{\partial x_2} & \dots & \frac{\partial f_m(\mathbf{x})}{\partial x_n}\end{bmatrix}_{m \times n}</script><p>为 $ f $ 在点 $\mathbf{x}$ 处的 Jacobi矩阵。</p><h2 id="Hessian矩阵"><a href="#Hessian矩阵" class="headerlink" title="Hessian矩阵"></a>Hessian矩阵</h2><blockquote><p><a href="https://www.bilibili.com/video/BV19M4y1n7M3?vd_source=59c9078be8272e804fcbbcf1da9a9f94">最优化基础—-基本概念：凸优化、梯度、Jacobi矩阵、Hessian矩阵</a></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 最优化 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 最优化基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>键盘布局</title>
+      <link href="/posts/a6b1e5df/"/>
+      <url>/posts/a6b1e5df/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://www.bilibili.com/video/BV1f8zNByE8e?vd_source=59c9078be8272e804fcbbcf1da9a9f94">Ctrl、Alt、F4…每个按键都是怎么来的？｜技术｜播客｜原来是这样</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>C++中的编程概念</title>
+      <link href="/posts/c8e7894a/"/>
+      <url>/posts/c8e7894a/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前向声明"><a href="#前向声明" class="headerlink" title="前向声明"></a>前向声明</h1><p>前向声明（Forward Declaration）在使用某个类/函数/枚举之前，告诉编译器某个类型存在，但不提供完整定义。编译器只需要知道 “有这个标识符” 就能进行语法检查，而不需要知道它的具体实现细节。</p><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 前向声明告诉编译器某个类型存在，但不提供完整定义</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>;     <span class="comment">// 前向声明</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">MyStruct</span>;   <span class="comment">// 前向声明</span></span><br></pre></td></tr></table></figure><h2 id="为什么需要？"><a href="#为什么需要？" class="headerlink" title="为什么需要？"></a>为什么需要？</h2><ol><li><p>解决循环依赖</p><p> <code>A.h</code> 包含 <code>B.h</code>，<code>B.h</code> 又包含 <code>A.h</code>，直接包含会导致编译报错</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br><span class="line"><span class="comment">// 前向声明 B，而不是 #include &quot;B.h&quot;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="comment">// 只声明指针/引用，不需要 B 的完整定义</span></span><br><span class="line">    B* b_ptr; </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(B&amp; b)</span></span>; </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// B.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br><span class="line"><span class="comment">// 前向声明 A，而不是 #include &quot;A.h&quot;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span> &#123;</span><br><span class="line">    A* a_ptr;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(A&amp; a)</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li><li><p>减少编译依赖，加速编译</p><p>如果一个头文件只需要用到某个类的指针 / 引用，而不需要创建对象、调用成员函数，那么用前向声明替代 <code>#include</code>，可以避免引入整个头文件：</p><ul><li>比如 <code>#include &quot;Entity.h&quot;</code> 会把 <code>Entity</code> 的完整定义引入，编译时要处理更多代码；</li><li>而前向声明 <code>class Entity;</code> 只告诉编译器 “有这个类”，编译更快，且修改 <code>Entity</code> 的定义时，当前文件不需要重新编译。</li></ul></li></ol><h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p><strong>能用的场景</strong>：</p><ul><li>声明指向该类的指针 / 引用（<code>Entity* ptr;</code>、<code>Entity&amp; ref;</code>）；</li><li>作为函数的参数 / 返回值（<code>void func(Entity);</code>、<code>Entity getEntity();</code>）；</li></ul><p><strong>不能用的场景</strong>：</p><ul><li>创建该类的对象（<code>Entity e;</code> → 编译器需要知道类的大小，必须有完整定义）；</li><li>访问类的成员（<code>e.size;</code>、<code>e.func();</code> → 编译器需要知道成员的具体定义）；</li><li>继承该类（<code>class Derived : public Entity {};</code> → 必须知道基类的完整定义）。</li></ul><h4 id=""><a href="#" class="headerlink" title=" "></a> </h4>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程 </category>
+          
+          <category> C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>C++内存分区</title>
+      <link href="/posts/14b8e558/"/>
+      <url>/posts/14b8e558/</url>
+      
+        <content type="html"><![CDATA[<h1 id="内存分区概念"><a href="#内存分区概念" class="headerlink" title="内存分区概念"></a>内存分区概念</h1><p>C++程序在运行时，内存通常被分为五大区域（代码、全局、常量、堆、栈），也可以简化为四个分区（代码、全局、堆、栈）。</p><h2 id="代码区（Code-Text-Segment）"><a href="#代码区（Code-Text-Segment）" class="headerlink" title="代码区（Code/Text Segment）"></a>代码区（Code/Text Segment）</h2><ul><li>存放程序（编译后）的机器指令</li><li>通常只读</li></ul><h2 id="全局区（Global-Area）"><a href="#全局区（Global-Area）" class="headerlink" title="全局区（Global Area）"></a>全局区（Global Area）</h2><ul><li>已初始化的全局/静态变量（Data段）</li><li>未初始化的全局/静态变量（BSS段）</li><li>全局常量、字符串常量（.rodata常量区）</li><li>生命周期：从程序开始到结束</li></ul><h2 id="堆区（Heap）"><a href="#堆区（Heap）" class="headerlink" title="堆区（Heap）"></a>堆区（Heap）</h2><ul><li>使用 <code>new</code> 或 <code>malloc</code> 动态分配</li><li>手动释放：<code>delete</code> / <code>free</code></li><li>生命周期由开发者管理</li></ul><h2 id="栈区（Stack）"><a href="#栈区（Stack）" class="headerlink" title="栈区（Stack）"></a>栈区（Stack）</h2><ul><li>用于局部变量、函数参数等</li><li>系统自动分配和释放</li><li>生命周期短暂，随函数调用进出</li></ul><hr><blockquote><p><a href="https://www.bilibili.com/video/BV1bwoRYJEXY?vd_source=59c9078be8272e804fcbbcf1da9a9f94">C++内存地图全解：变量到底藏在哪？ 高频面试内存分区精讲</a></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程 </category>
+          
+          <category> C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>前端和后端</title>
+      <link href="/posts/fb005d31/"/>
+      <url>/posts/fb005d31/</url>
+      
+        <content type="html"><![CDATA[<p>把整个互联网产品（网站 / APP / 小程序）比作<strong>一家线下超市</strong>：</p><p><strong>前端</strong>：超市的<strong>购物区</strong>（货架、收银台、导购员、购物车）—— 用户直接接触，负责<strong>视觉展示和交互体验</strong>，用户能看、能摸、能操作；</p><p><strong>后端</strong>：超市的<strong>仓库、后台办公室、物流系统、财务系统</strong>—— 用户完全接触不到，负责<strong>数据管理、业务规则、资源调度</strong>，支撑前端的所有操作；</p><p><strong>前后端的连接</strong>：超市的<strong>导购员喊仓库补货、收银台连财务系统</strong>—— 前端通过「约定的规则」向后端要数据 / 提需求，后端处理后反馈结果。</p><h1 id="一、前端开发：做-“用户能看见、能操作的一切”"><a href="#一、前端开发：做-“用户能看见、能操作的一切”" class="headerlink" title="一、前端开发：做 “用户能看见、能操作的一切”"></a>一、前端开发：做 “用户能看见、能操作的一切”</h1><h2 id="核心定位"><a href="#核心定位" class="headerlink" title="核心定位"></a>核心定位</h2><p><strong>用户侧的开发</strong>，核心目标是<strong>打造良好的视觉体验和流畅的交互逻辑</strong>，让用户能轻松、直观地使用产品，同时保证在不同设备（电脑、手机、平板）上都能正常显示和操作。</p><h2 id="关键特征"><a href="#关键特征" class="headerlink" title="关键特征"></a>关键特征</h2><ol><li><strong>运行位置</strong>：<strong>用户自己的设备</strong>（电脑浏览器、手机 APP / 小程序、平板），<strong>不占用服务器资源</strong>，代码由用户设备加载执行；</li><li><strong>交互对象</strong>：<strong>最终用户</strong>（直接和人打交道），偶尔通过网络和后端服务器通信；</li><li><strong>核心要求</strong>：<strong>美观、流畅、兼容、易用</strong>—— 比如按钮点了就有反应、手机上看页面不跑偏、网络差的时候也能正常显示基础内容。</li></ol><h2 id="前端的核心工作内容"><a href="#前端的核心工作内容" class="headerlink" title="前端的核心工作内容"></a>前端的核心工作内容</h2><p>前端开发不是单纯的 “做页面”，而是<strong>把设计稿变成可交互的产品，并保障体验</strong>，核心工作分 4 类：</p><ol><li><strong>界面搭建</strong>：把 UI 设计师的设计稿，用技术还原成可视化的页面（比如电商网站的商品列表、微信的聊天界面）；</li><li><strong>交互实现</strong>：处理用户的所有操作，比如点击按钮弹窗、下拉页面加载更多、输入框实时验证、滑动切换图片；</li><li><strong>多端适配</strong>：保证页面在不同设备、不同浏览器上显示一致（比如电脑上的淘宝和手机淘宝，内容一致但布局适配屏幕）；</li><li><strong>前端性能优化</strong>：让页面加载更快、操作更流畅（比如首屏加载控制在 3 秒内、点击按钮无延迟）。</li></ol><h2 id="核心技术体系"><a href="#核心技术体系" class="headerlink" title="核心技术体系"></a>核心技术体系</h2><p>前端的技术栈非常成熟，<strong>所有技术最终都围绕「HTML/CSS/JavaScript」三大核心</strong>，这是前端的 “地基”，其他都是基于这三者的封装和拓展。</p><div class="table-container"><table><thead><tr><th style="text-align:center">技术层级</th><th style="text-align:center">核心技术</th><th style="text-align:center">作用说明</th><th style="text-align:center">常用工具 / 框架</th></tr></thead><tbody><tr><td style="text-align:center">基础层（必学）</td><td style="text-align:center">HTML</td><td style="text-align:center">页面的「骨架」，定义页面有什么内容（标题、按钮、图片、列表）</td><td style="text-align:center">纯 HTML5（主流）</td></tr><tr><td style="text-align:center">基础层（必学）</td><td style="text-align:center">CSS</td><td style="text-align:center">页面的「皮肤」，定义页面的样式（颜色、大小、布局、动画）</td><td style="text-align:center">CSS3、Flex/Grid（布局）、Less/Sass（CSS 预处理器）</td></tr><tr><td style="text-align:center">基础层（必学）</td><td style="text-align:center">JavaScript（JS）</td><td style="text-align:center">页面的「大脑」，定义页面的交互逻辑（点击、滑动、请求数据）</td><td style="text-align:center">ES6+（JS 最新语法）</td></tr><tr><td style="text-align:center">框架层（主流）</td><td style="text-align:center">前端框架</td><td style="text-align:center">封装了常用的 JS/CSS 逻辑，大幅提升开发效率，适合中大型项目</td><td style="text-align:center">Vue3（易上手）、React（灵活，大厂常用）、Angular（全能型，外企 / 大厂）</td></tr><tr><td style="text-align:center">工程化</td><td style="text-align:center">构建工具</td><td style="text-align:center">管理前端项目的代码、依赖、打包，让开发更规范</td><td style="text-align:center">Vite（新一代，快）、Webpack（经典，成熟）</td></tr><tr><td style="text-align:center">多端开发</td><td style="text-align:center">跨端框架</td><td style="text-align:center">一套代码适配多个平台（手机 APP、小程序、H5），减少重复开发</td><td style="text-align:center">UniApp、Taro（适配小程序 / APP）、Flutter（跨端原生，偏客户端）</td></tr><tr><td style="text-align:center">辅助工具</td><td style="text-align:center">调试 / 规范</td><td style="text-align:center">保障代码质量和开发效率</td><td style="text-align:center">Chrome 开发者工具、Eslint（代码规范）、Prettier（代码格式化）</td></tr></tbody></table></div><h1 id="二、后端开发：做-“用户看不见、但支撑一切的核心逻辑”"><a href="#二、后端开发：做-“用户看不见、但支撑一切的核心逻辑”" class="headerlink" title="二、后端开发：做 “用户看不见、但支撑一切的核心逻辑”"></a>二、后端开发：做 “用户看不见、但支撑一切的核心逻辑”</h1><h2 id="核心定位-1"><a href="#核心定位-1" class="headerlink" title="核心定位"></a>核心定位</h2><p><strong>服务器侧的开发</strong>，核心目标是<strong>保障产品的业务逻辑正确、数据安全、系统稳定、性能达标</strong>，简单说就是 “前端提什么需求，后端就按规则处理，并且把结果返给前端”，同时管理所有产品数据。</p><h2 id="关键特征-1"><a href="#关键特征-1" class="headerlink" title="关键特征"></a>关键特征</h2><ol><li><strong>运行位置</strong>：<strong>远程的服务器</strong>（阿里云 / 腾讯云等云服务器，或公司自建服务器），代码永远在服务器上运行，用户设备无法直接访问；</li><li><strong>交互对象</strong>：<strong>前端服务器、数据库、中间件、其他第三方服务</strong>（比如微信支付、短信接口），<strong>不直接和用户打交道</strong>；</li><li><strong>核心要求</strong>：<strong>安全、稳定、高效、可扩展</strong>—— 比如用户登录密码不泄露、双 11 电商系统不崩溃、百万用户同时访问不卡顿、产品升级时不影响现有功能。</li></ol><h2 id="后端的核心工作内容"><a href="#后端的核心工作内容" class="headerlink" title="后端的核心工作内容"></a>后端的核心工作内容</h2><p>后端开发的核心是<strong>处理 “数据” 和 “逻辑”</strong>，所有工作都围绕「接收请求→处理逻辑→操作数据→返回结果」这个核心流程，具体分 6 类：</p><ol><li><strong>接口开发</strong>：开发前后端沟通的「API 接口」（约定好的地址和数据格式），这是前后端唯一的沟通桥梁，比如 “登录接口”“获取商品列表接口”“下单接口”；</li><li><strong>业务逻辑处理</strong>：实现产品的核心规则，比如登录时验证账号密码是否正确、下单时扣减商品库存并生成订单、充值时对接支付接口并更新账户余额；</li><li><strong>数据层操作</strong>：管理所有产品数据，包括<strong>数据库的增删改查</strong>（比如存储用户信息、查询商品数据、删除订单）、数据备份、数据同步；</li><li><strong>服务器与部署</strong>：把后端代码部署到云服务器，配置服务器环境（比如安装 Java/Python 运行环境），保障服务器 7×24 小时运行；</li><li><strong>安全防护</strong>：防止黑客攻击，保障数据安全，比如防止密码泄露（加密存储）、防止恶意请求（接口限流）、防止 SQL 注入（数据库攻击）、验证用户身份（token / 会话）；</li><li><strong>性能与高并发优化</strong>：让系统能支撑更多用户同时访问，比如加入缓存（Redis）减少数据库压力、做分布式部署（多台服务器同时工作）、优化代码执行效率。</li></ol><h2 id="后端的核心技术体系（「编程语言-框架」是核心，其余是必备配套技术）"><a href="#后端的核心技术体系（「编程语言-框架」是核心，其余是必备配套技术）" class="headerlink" title="后端的核心技术体系（「编程语言 + 框架」是核心，其余是必备配套技术）"></a>后端的核心技术体系（「编程语言 + 框架」是核心，其余是必备配套技术）</h2><p>后端技术栈是一个<strong>完整的生态体系</strong>，编程语言只是 “工具”，必须配合框架、数据库、服务器、中间件等才能完成开发，核心体系分 5 类，且不同编程语言对应不同的主流框架（按需选择）：</p><div class="table-container"><table><thead><tr><th style="text-align:center">技术层级</th><th style="text-align:center">核心作用</th><th style="text-align:center">主流技术 / 工具</th><th style="text-align:center">搭配说明</th></tr></thead><tbody><tr><td style="text-align:center">核心层（语言 + 框架）</td><td style="text-align:center">实现业务逻辑和接口开发</td><td style="text-align:center">语言：Java、Python、Go、PHP、C++框架：SpringBoot（Java）、Django/FastAPI（Python）、Gin（Go）、Laravel（PHP）</td><td style="text-align:center">框架封装了通用逻辑，比如 Java+SpringBoot 是目前最主流的后端组合，开发效率高、生态完善</td></tr><tr><td style="text-align:center">数据层（数据库）</td><td style="text-align:center">存储和管理所有产品数据</td><td style="text-align:center">关系型：MySQL（主流）、PostgreSQL（功能强）、Oracle（大型企业）非关系型：Redis（缓存，必用）、MongoDB（存非结构化数据，比如图片 / 文章）、Elasticsearch（搜索引擎）</td><td style="text-align:center">关系型数据库存结构化数据（用户信息、订单），非关系型数据库做补充，Redis 几乎是所有后端项目的标配</td></tr><tr><td style="text-align:center">服务器层</td><td style="text-align:center">接收前端请求，转发给后端程序</td><td style="text-align:center">Nginx（主流，反向代理 + 静态资源服务）、Tomcat（Java 专属）、Apache（经典）</td><td style="text-align:center">Nginx 是必备，负责做 “流量入口”，比如把用户的请求转发给对应的后端接口</td></tr><tr><td style="text-align:center">中间件层</td><td style="text-align:center">提升系统性能、可扩展性，解决分布式问题</td><td style="text-align:center">缓存：Redis消息队列：Kafka/RabbitMQ（削峰填谷，比如双 11 下单）服务注册：Nacos/Eureka（分布式部署用）</td><td style="text-align:center">中间件是后端 “进阶” 的关键，中小型项目至少用 Redis，大型项目会用到多种中间件</td></tr><tr><td style="text-align:center">运维 / 部署</td><td style="text-align:center">保障服务器和代码正常运行</td><td style="text-align:center">Docker（容器化，环境一致）、K8s（容器编排）、Jenkins（自动化部署）、Linux（服务器系统，必学）</td><td style="text-align:center">后端开发必须懂基础的 Linux 和 Docker，这是部署代码的前提</td></tr></tbody></table></div><h1 id="三、前后端的核心协作逻辑：通过「API-接口」通信"><a href="#三、前后端的核心协作逻辑：通过「API-接口」通信" class="headerlink" title="三、前后端的核心协作逻辑：通过「API 接口」通信"></a>三、前后端的核心协作逻辑：通过「API 接口」通信</h1><p>互联网开发的<strong>主流模式是「前后端分离」—— 前端和后端是两个独立的项目，各自开发、各自部署，</strong>唯一的沟通方式就是「API 接口」**，这和早期 “前后端耦合（代码写在一起）” 的模式完全不同，也是现在大厂、中小企业的标配。</p><h2 id="「接口约定」"><a href="#「接口约定」" class="headerlink" title="「接口约定」"></a>「接口约定」</h2><p>为了避免沟通混乱，前端和后端在开发前会<strong>约定好 API 的所有规则</strong>，并形成文档（常用工具：Swagger、Yapi、Apifox），约定的内容包括：</p><ul><li>接口地址（比如<code>/api/login</code>）；</li><li>请求方式（比如 GET：查询数据 / POST：提交数据 / PUT：修改数据 / DELETE：删除数据）；</li><li>请求参数（比如账号、密码，包括参数名、类型、是否必传）；</li><li>返回数据（比如成功的返回格式、失败的返回格式，包括字段名、类型）；</li><li>错误码（比如 200 = 成功、400 = 参数错误、401 = 未登录、500 = 服务器内部错误）。</li></ul><h3 id=""><a href="#" class="headerlink" title=" "></a> </h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>函数签名</title>
+      <link href="/posts/b332b12e/"/>
+      <url>/posts/b332b12e/</url>
+      
+        <content type="html"><![CDATA[<p>函数签名决定函数是否相同。</p><p>函数签名：</p><ul><li>函数名</li><li>参数类型列表</li><li>cv限定符——const 和 volatile</li><li>引用限定符（&amp; 和 &amp;&amp;）</li></ul><p>虚函数的重写需要完全匹配</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程 </category>
+          
+          <category> C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Ubuntu中安装配置anaconda</title>
       <link href="/posts/92674cb2/"/>
       <url>/posts/92674cb2/</url>
