@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>最优化基础——一维搜索</title>
+      <link href="/posts/657854d2/"/>
+      <url>/posts/657854d2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>对于目标函数 $f : \mathbb{R} \rightarrow \mathbb{R}$ 的单值函数的最小化问题的迭代求解的方法。</p><h1 id="暴力搜索法"><a href="#暴力搜索法" class="headerlink" title="暴力搜索法"></a>暴力搜索法</h1><p>暴力搜索法（枚举搜索法/网格搜索法）：在搜索区间内按固定步长遍历所有候选点，筛选出目标函数的最优值点，逻辑简单但精度由步长决定，步长越小精度越高、计算量越大。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Algorithm BruteForceSearch：求解极小值</span><br><span class="line"># 在区间 [a, b] 内按固定步长遍历，寻找目标函数f(x)的近似极小值</span><br><span class="line">Input：目标函数f(x)，搜索区间左端点a，右端点b，遍历步长step（step&gt;0)</span><br><span class="line">Output：近似极小值点x_min，近似极小值f_min</span><br><span class="line"></span><br><span class="line">1. Initialize x = a, x_min = a, f_min = f(x_min)</span><br><span class="line">2. while x ≤ b </span><br><span class="line">3.do</span><br><span class="line">4.current_f = f(x)</span><br><span class="line">5.if current_f &lt; f_min then</span><br><span class="line">6.f_min = current_f</span><br><span class="line">7.x_min = x</span><br><span class="line">8.end if</span><br><span class="line">9.x = x + step</span><br><span class="line">10.end while</span><br><span class="line">11.return x_min, f_min</span><br></pre></td></tr></table></figure><ul><li>适用场景：一维单峰/多峰函数的粗略最优值搜索，作为后续高精度搜索的初值选择 </li><li>计算量：$k = ceil(\frac{x<em>{max}-x</em>{min}}{step}) + 1$</li><li>精度控制：极小值近似精度 ≤ step，步长 step 越小精度越高，计算量成反比增加 </li><li>边界处理：循环条件 <code>x ≤ b</code> 确保遍历到搜索区间右端点，无遗漏</li><li>局限性：仅适用于一维搜索，高维场景计算量会指数级爆炸，无实用价值</li></ul><h1 id="区间消去法"><a href="#区间消去法" class="headerlink" title="区间消去法"></a>区间消去法</h1><blockquote><p>如果 $f(x)$ 定义在 $[x<em>{min}, x</em>{max}]$ 上，在 $x<em>0 \in [x</em>{min}, x<em>{max}]$ 左边递减，右边递增，那么 $f(x)$ 就是在 $[x</em>{min}, x<em>{max}]$ 上的<em>单谷函数</em>，$f(x_0)$ 就是 $f(x)$在  $[x</em>{min}, x_{max}]$ 上的最小值（谷值），$x_0$是<em>谷值点</em>。</p></blockquote><p>区间消去法是<strong>单峰函数</strong>的一维搜索方法。利用单峰性，通过比较区间内两点的函数值，<strong>消去不可能包含极小值的区间</strong>，逐步缩小区间范围，最终以区间中点作为近似极小值点。</p><p><img src="https://raw.githubusercontent.com/ByteBotXplorer/picgo/main/%E6%9C%80%E4%BC%98%E5%8C%96/%E5%8C%BA%E9%97%B4%E6%B6%88%E5%8E%BB%E6%B3%95.gif" alt=""></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Algorithm IntervalEliminationSearch：求解单峰函数的极小值</span><br><span class="line"># 前提：f(x) 在 [a, b] 上严格单峰，硬约束：分割比例r &lt; 0.5</span><br><span class="line">Input：目标函数 f(x)，初始区间[a, b]，精度 epsilon</span><br><span class="line">Output：近似极小值点min_x，近似极小值min_y，迭代次数k</span><br><span class="line"></span><br><span class="line">1.Initialize r = 0.25，x_left_side = x_min，x_right_side = x_max</span><br><span class="line">2.k = 0</span><br><span class="line">3.while True</span><br><span class="line">4. do</span><br><span class="line">5.x_left_center = x_left_side + r * (x_right_side - x_left_side)</span><br><span class="line">6.x_right_center = x_right_side - r * (x_right_side - x_left_side)</span><br><span class="line">7.y_left_center = f(x_left_center)</span><br><span class="line">8.y_right_center = f(x_right_center)</span><br><span class="line">9.if y_left_center &gt;= y_right_center </span><br><span class="line">10.thenx_left_side = x_left_center</span><br><span class="line">11.elsex_right_side = x_right_center</span><br><span class="line">12.end if</span><br><span class="line">13.k = k + 1</span><br><span class="line">14.if (x_right_side - x_left_side) &lt;= epsilon </span><br><span class="line">15.then break</span><br><span class="line">16.end if</span><br><span class="line">17.end while</span><br><span class="line">18.min_x = (x_left_side + x_right_side) / 2</span><br><span class="line">19.min_y = f(min_x)</span><br><span class="line">20.return min_x, min_y, k</span><br></pre></td></tr></table></figure><ul><li><strong>迭代稳定</strong>：固定分割比例 $r=0.25$，每次消去固定比例无效区间，收敛过程平稳，无震荡；</li><li><p>计算量：$ k = [ceil(\frac{log(\epsilon / (x<em>{max} - x</em>{min}))}{log(1-r)}) + 1]* 2$ </p></li><li><p>硬约束：分割比例必须小于0.5</p></li><li>收敛速度：$r $越接近 0.5，每次消去的无效区间比例越大，剩余有效区间越小，迭代次数越少，收敛越快。</li><li>分割比例随精度要求动态调整，在「每次消去尽可能多的无效区间」和「两个分割点不重合、保留有效判断空间」之间取最优平衡，最终实现<strong>迭代次数最少、收敛速度最快</strong>：$r=0.5−0.1ε$</li></ul><h1 id="黄金分割法"><a href="#黄金分割法" class="headerlink" title="黄金分割法"></a>黄金分割法</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 最优化 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 最优化基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>显著图</title>
       <link href="/posts/4a9e635/"/>
       <url>/posts/4a9e635/</url>
