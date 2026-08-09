@@ -1,0 +1,432 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>空间距离度量 | bytebot的blog</title><meta name="author" content="ByteBotXplorer"><meta name="copyright" content="ByteBotXplorer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="主流的距离度量方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="空间距离度量">
+<meta property="og:url" content="https://bytebotxplorer.github.io/posts/39445ea8/index.html">
+<meta property="og:site_name" content="bytebot的blog">
+<meta property="og:description" content="主流的距离度量方法">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://bytebotxplorer.github.io/imgs/background/5oDRkWVKctx2b6A.png">
+<meta property="article:published_time" content="2026-05-19T07:59:17.000Z">
+<meta property="article:modified_time" content="2026-08-09T15:48:41.033Z">
+<meta property="article:author" content="ByteBotXplorer">
+<meta property="article:tag" content="Math">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bytebotxplorer.github.io/imgs/background/5oDRkWVKctx2b6A.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "空间距离度量",
+  "url": "https://bytebotxplorer.github.io/posts/39445ea8/",
+  "image": "https://bytebotxplorer.github.io/imgs/background/5oDRkWVKctx2b6A.png",
+  "datePublished": "2026-05-19T07:59:17.000Z",
+  "dateModified": "2026-08-09T15:48:41.033Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "ByteBotXplorer",
+      "url": "https://bytebotxplorer.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://bytebotxplorer.github.io/posts/39445ea8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.7/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#131416')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '空间距离度量',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/budai-matery.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/imgs/background/5oDRkWVKctx2b6A.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/imgs/GEM/gem1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">90</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">35</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: transparent;"><nav id="nav"><!-- 左侧博客信息区域--><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">bytebot的blog</span></a><a class="nav-page-title" href="/"><span class="site-name">空间距离度量</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">空间距离度量</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-05-19T07:59:17.000Z" title="Created 2026-05-19 15:59:17">2026-05-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-08-09T15:48:41.033Z" title="Updated 2026-08-09 23:48:41">2026-08-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Math/">Math</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>5mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id data-flag-title><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-08-09 23:48:41&quot;}" hidden></div><p>在机器学习、数据挖掘以及计算机视觉（如图像特征匹配、目标跟踪）中，<strong>“如何衡量两个样本之间的相似度或距离”</strong>是一个非常核心的问题。选择不同的距离度量方式，往往会直接决定算法（如 KNN、K-Means、SVM 等）的成败。</p>
+<h2 id="几何空间距离（不考虑数据分布）"><a href="#几何空间距离（不考虑数据分布）" class="headerlink" title="几何空间距离（不考虑数据分布）"></a>几何空间距离（不考虑数据分布）</h2><p>这类距离只关注样本点在多维空间中的绝对几何位置，不关心数据的统计学特征（如方差、相关性）。</p>
+<h3 id="1-欧氏距离-Euclidean-Distance"><a href="#1-欧氏距离-Euclidean-Distance" class="headerlink" title="1. 欧氏距离 (Euclidean Distance)"></a>1. 欧氏距离 (Euclidean Distance)</h3><p>最常见的直线的物理距离。</p>
+<ul>
+<li><p><strong>数学公式</strong>： 对于 n 维空间中的两个点 $x = (x_1, x_2, …, x_n)$ 和 $y = (y_1, y_2, …, y_n)$：</p>
+<script type="math/tex; mode=display">d(x, y) = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}</script></li>
+<li><p><strong>优缺点</strong>：</p>
+<ul>
+<li><strong>优点</strong>：极其直观，计算简单，符合人类对物理空间的直觉。</li>
+<li><strong>缺点</strong>：<ol>
+<li><strong>受量纲（单位）影响极大</strong>。如果特征 A 范围是 $1 \sim 10$，特征 B 是 $1000 \sim 10000$，距离会被特征 B 主导。</li>
+<li><strong>假设各维度完全独立</strong>，无法处理特征之间存在相关性的情况。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-曼哈顿距离-Manhattan-Distance"><a href="#2-曼哈顿距离-Manhattan-Distance" class="headerlink" title="2. 曼哈顿距离 (Manhattan Distance)"></a>2. 曼哈顿距离 (Manhattan Distance)</h3><p>也称“城市街区距离”，即只能沿着坐标轴方向走折线的距离（如同在网格状的曼哈顿街道中开车）。</p>
+<ul>
+<li><p><strong>数学公式</strong>：</p>
+<script type="math/tex; mode=display">d(x, y) = \sum_{i=1}^n |x_i - y_i|</script></li>
+<li><p><strong>优缺点</strong>：</p>
+<ul>
+<li><strong>优点</strong>：计算速度比欧氏距离快（无需开方和平方）；在图像处理中常用于计算像素灰度差异（如 SAD 算子）。</li>
+<li><strong>缺点</strong>：缺乏旋转不变性。如果坐标轴旋转，曼哈顿距离会发生变化。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-切比雪夫距离-Chebyshev-Distance"><a href="#3-切比雪夫距离-Chebyshev-Distance" class="headerlink" title="3. 切比雪夫距离 (Chebyshev Distance)"></a>3. 切比雪夫距离 (Chebyshev Distance)</h3><p>国际象棋中“国王”移动的距离。国王可以横、直、斜走，移动到相邻格子都算 1 步。因此，两点之间的切比雪夫距离等于各维度差值绝对值的最大值。</p>
+<ul>
+<li><p><strong>数学公式</strong>：</p>
+<script type="math/tex; mode=display">d(x, y) = \max_{i} (|x_i - y_i|)</script></li>
+<li><p><strong>应用场景</strong>：常用于仓储物流中的起重机移动路径规划（长和宽可以同时并发移动，总时间由最慢的那个维度决定）。</p>
+</li>
+</ul>
+<h3 id="4-闵可夫斯基距离-Minkowski-Distance"><a href="#4-闵可夫斯基距离-Minkowski-Distance" class="headerlink" title="4. 闵可夫斯基距离 (Minkowski Distance)"></a>4. 闵可夫斯基距离 (Minkowski Distance)</h3><p>它不是一种单独的距离，而是<strong>对上述三种距离的数学概括和推广</strong>。</p>
+<ul>
+<li><p><strong>数学公式</strong>：</p>
+<script type="math/tex; mode=display">d(x, y) = \left( \sum_{i=1}^n |x_i - y_i|^p \right)^{\frac{1}{p}}</script></li>
+<li><p><strong>退化关系</strong>：</p>
+<ul>
+<li>当 $p = 1$ 时，它就是<strong>曼哈顿距离</strong>。</li>
+<li>当 $p = 2$ 时，它就是<strong>欧氏距离</strong>。</li>
+<li>当 $p \to \infty$ 时，它极限退化为<strong>切比雪夫距离</strong>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="方向与结构相似度"><a href="#方向与结构相似度" class="headerlink" title="方向与结构相似度"></a>方向与结构相似度</h2><h3 id="5-余弦相似度与余弦距离-Cosine-Similarity-amp-Distance"><a href="#5-余弦相似度与余弦距离-Cosine-Similarity-amp-Distance" class="headerlink" title="5. 余弦相似度与余弦距离 (Cosine Similarity &amp; Distance)"></a>5. 余弦相似度与余弦距离 (Cosine Similarity &amp; Distance)</h3><p>余弦相似度关注的是<strong>两个向量夹角的余弦值</strong>，即它们在方向上的统一性，而非绝对长度。</p>
+<ul>
+<li><p><strong>数学公式</strong>：</p>
+<ul>
+<li><p><strong>余弦相似度</strong>（范围 [-1, 1]）：</p>
+<script type="math/tex; mode=display">\text{Similarity}(x, y) = \cos(\theta) = \frac{x \cdot y}{\|x\| \|y\|} = \frac{\sum_{i=1}^n x_i y_i}{\sqrt{\sum_{i=1}^n x_i^2} \sqrt{\sum_{i=1}^n y_i^2}}</script></li>
+<li><p><strong>余弦距离</strong>（范围 [0, 2]）：</p>
+<script type="math/tex; mode=display">d_C(x, y) = 1 - \text{Similarity}(x, y)</script></li>
+</ul>
+</li>
+<li><p><strong>优缺点</strong>：</p>
+<ul>
+<li><strong>优点</strong>：<strong>天生免疫尺度放大</strong>。哪怕一个向量长度是另一个的10倍，只要方向相同，余弦相似度就是1。极其适合文本向量（TF-IDF）和图像特征向量（如深度学习提取的 Embedding）的匹配。</li>
+<li><strong>缺点</strong>：完全忽略了绝对数值的差异（例如，用户A给两部电影评 1 分和 2 分，用户B评 4 分和 5 分，他们的偏好方向一致，但绝对消费水平不同，余弦无法区分）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="统计学空间距离（考虑数据分布）"><a href="#统计学空间距离（考虑数据分布）" class="headerlink" title="统计学空间距离（考虑数据分布）"></a>统计学空间距离（考虑数据分布）</h2><p>当数据的各个维度单位不同，或者维度之间有强烈的拉扯关系（相关性）时，几何距离集体失效，必须引入统计学距离。</p>
+<h3 id="6-标准化欧氏距离-Standardized-Euclidean-Distance"><a href="#6-标准化欧氏距离-Standardized-Euclidean-Distance" class="headerlink" title="6. 标准化欧氏距离 (Standardized Euclidean Distance)"></a>6. 标准化欧氏距离 (Standardized Euclidean Distance)</h3><p>为了解决欧氏距离“受量纲影响”而提出的改进版。它先将各个维度的特征数据转化为“均值为0，方差为1”的标准分布，再算欧氏距离。</p>
+<ul>
+<li><p><strong>数学公式</strong>： 设第 i 个维度的标准差为 s_i，则：</p>
+<script type="math/tex; mode=display">d(x, y) = \sqrt{\sum_{i=1}^n \frac{(x_i - y_i)^2}{s_i^2}}</script></li>
+<li><p><strong>优缺点</strong>：</p>
+<ul>
+<li><strong>优点</strong>：成功消除了各个特征因为单位、数值范围不同带来的权重不均匀问题。</li>
+<li><strong>缺点</strong>：<strong>依然假设各维度之间是独立的</strong>，无法解决特征强相关（例如图像中相邻像素的关联、身高与体重的联动）带来的数据冗余。</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-马氏距离-Mahalanobis-Distance"><a href="#7-马氏距离-Mahalanobis-Distance" class="headerlink" title="7. 马氏距离 (Mahalanobis Distance)"></a>7. 马氏距离 (Mahalanobis Distance)</h3><p>终极演进版。它不仅消除了方差（量纲）的影响，还<strong>利用协方差矩阵强行斩断了特征之间的相关性</strong>。</p>
+<ul>
+<li><p><strong>数学公式</strong>： 设数据集的协方差矩阵为 $\Sigma$，均值中心为 $\mu$。样本点 $x$ 到中心 $\mu$ 的马氏距离为：</p>
+<script type="math/tex; mode=display">D_M(x) = \sqrt{(x - \mu)^T \Sigma^{-1} (x - \mu)}</script></li>
+<li><p><strong>本质理解</strong>： 马氏距离的本质是通过旋转和缩放坐标轴（基于特征分解），把一个倾斜的、长短不一的椭圆形数据分布，投影变换为一个完美的、正向的圆形标准正态分布，然后在此空间内计算欧氏距离。</p>
+</li>
+<li><p><strong>优缺点及局限</strong>：</p>
+<ul>
+<li><strong>优点</strong>：量纲无关、考虑相关性、具备线性变换不变性。在多维异常值检测（Outlier Detection）中表现绝佳。</li>
+<li><strong>缺点</strong>：<ol>
+<li>严重依赖样本数据计算协方差矩阵。如果样本量 N 小于特征维度 d，协方差矩阵会不可逆（奇异矩阵）。</li>
+<li>对离群点极其敏感，个别脏数据会严重污染协方差矩阵，导致距离失真。</li>
+<li>需要计算矩阵的逆（\Sigma^{-1}），计算复杂度为 O(d^3)，在高维数据下非常耗时。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id><a href="#" class="headerlink" title=" "></a> </h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>距离度量</th>
+<th>是否消除了方差（量纲）</th>
+<th>是否消除了相关性</th>
+<th>计算复杂度</th>
+<th>图像/CV典型应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>欧氏距离</strong></td>
+<td>❌ 否</td>
+<td>❌ 否</td>
+<td>O(d)</td>
+<td>基础物理空间计算、颜色空间靠拢度</td>
+</tr>
+<tr>
+<td><strong>曼哈顿距离</strong></td>
+<td>❌ 否</td>
+<td>❌ 否</td>
+<td>O(d)</td>
+<td>图像块匹配中的 SAD (绝对误差和)</td>
+</tr>
+<tr>
+<td><strong>余弦距离</strong></td>
+<td>❌ 否 (但免长度)</td>
+<td>❌ 否</td>
+<td>O(d)</td>
+<td>人脸识别 Embedding 相似度匹配</td>
+</tr>
+<tr>
+<td><strong>标准化欧氏距离</strong></td>
+<td>是</td>
+<td>❌ 否</td>
+<td>O(d)</td>
+<td>混合多源异构特征的聚类分析</td>
+</tr>
+<tr>
+<td><strong>马氏距离</strong></td>
+<td>是</td>
+<td>是</td>
+<td>O(d^3)</td>
+<td>目标跟踪中的卡尔曼滤波状态关联、多维异常检测</td>
+</tr>
+</tbody>
+</table>
+</div>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://bytebotxplorer.github.io">ByteBotXplorer</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://bytebotxplorer.github.io/posts/39445ea8/">https://bytebotxplorer.github.io/posts/39445ea8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Math/">Math</a></div><div class="post-share"><div class="social-share" data-image="/imgs/background/5oDRkWVKctx2b6A.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/17aca24f/" title="SLAM地图"><img class="cover" src="/imgs/image_process/2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">SLAM地图</div></div><div class="info-2"><div class="info-item-1">高程地图高程地图（Elevation Map），2.5D地图。 栅格地图：平坦地面，二维场景； 体素地图：无人机三维场景； 高程地图：无人车在非平坦路面运行  本质是一个二维网格地图，每个格子存储“该位置的地面高度”。 123456789俯视图：y↑|  [0.02] [0.03] [0.04] [0.05]|  [0.01] [0.02] [0.03...</div></div></div></a><a class="pagination-related" href="/posts/246ed029/" title="ROS 插件"><img class="cover" src="/imgs/GEM/gem2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">ROS 插件</div></div><div class="info-2"><div class="info-item-1">将动态链接库.so注册成插件的链条：  C++ 代码中声明：在 realsense_node_factory.cpp 底部使用宏 PLUGINLIB_EXPORT_CLASS(realsense2_camera::RealSenseNodeFactory, nodelet::Nodelet)，在 .so 内部打下标记。  XML 文件中索引：nodel...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E4%BD%95%E7%A9%BA%E9%97%B4%E8%B7%9D%E7%A6%BB%EF%BC%88%E4%B8%8D%E8%80%83%E8%99%91%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">几何空间距离（不考虑数据分布）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%AC%A7%E6%B0%8F%E8%B7%9D%E7%A6%BB-Euclidean-Distance"><span class="toc-number">1.1.</span> <span class="toc-text">1. 欧氏距离 (Euclidean Distance)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB-Manhattan-Distance"><span class="toc-number">1.2.</span> <span class="toc-text">2. 曼哈顿距离 (Manhattan Distance)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%87%E6%AF%94%E9%9B%AA%E5%A4%AB%E8%B7%9D%E7%A6%BB-Chebyshev-Distance"><span class="toc-number">1.3.</span> <span class="toc-text">3. 切比雪夫距离 (Chebyshev Distance)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%97%B5%E5%8F%AF%E5%A4%AB%E6%96%AF%E5%9F%BA%E8%B7%9D%E7%A6%BB-Minkowski-Distance"><span class="toc-number">1.4.</span> <span class="toc-text">4. 闵可夫斯基距离 (Minkowski Distance)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E5%90%91%E4%B8%8E%E7%BB%93%E6%9E%84%E7%9B%B8%E4%BC%BC%E5%BA%A6"><span class="toc-number">2.</span> <span class="toc-text">方向与结构相似度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%BD%99%E5%BC%A6%E7%9B%B8%E4%BC%BC%E5%BA%A6%E4%B8%8E%E4%BD%99%E5%BC%A6%E8%B7%9D%E7%A6%BB-Cosine-Similarity-amp-Distance"><span class="toc-number">2.1.</span> <span class="toc-text">5. 余弦相似度与余弦距离 (Cosine Similarity &amp; Distance)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%A9%BA%E9%97%B4%E8%B7%9D%E7%A6%BB%EF%BC%88%E8%80%83%E8%99%91%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">统计学空间距离（考虑数据分布）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%A0%87%E5%87%86%E5%8C%96%E6%AC%A7%E6%B0%8F%E8%B7%9D%E7%A6%BB-Standardized-Euclidean-Distance"><span class="toc-number">3.1.</span> <span class="toc-text">6. 标准化欧氏距离 (Standardized Euclidean Distance)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E9%A9%AC%E6%B0%8F%E8%B7%9D%E7%A6%BB-Mahalanobis-Distance"><span class="toc-number">3.2.</span> <span class="toc-text">7. 马氏距离 (Mahalanobis Distance)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text"> </span></a></li></ol></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By ByteBotXplorer</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="external nofollow noopener noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></span></div><div class="footer_custom_text">终身学习，持续实践。</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Toggle Between Traditional and Simplified Chinese">繁</button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><script src="/js/tw_cn.js?v=5.5.3"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.7/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zindex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="输入关键词…" type="text"></div><hr><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.3"></script></div></div></body></html>
