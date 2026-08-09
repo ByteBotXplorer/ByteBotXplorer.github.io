@@ -1,0 +1,531 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Livox-mid360 | bytebot的blog</title><meta name="author" content="ByteBotXplorer"><meta name="copyright" content="ByteBotXplorer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="https:&#x2F;&#x2F;news.qq.com&#x2F;rain&#x2F;a&#x2F;20250416A07QMD00  https:&#x2F;&#x2F;livox-wiki-cn.readthedocs.io&#x2F;zh-cn&#x2F;latest&#x2F;introduction&#x2F;livox_scanning_pattern.html?f_link_type&#x3D;f_linkinlinenote&amp;flow_extra&#x3D;eyJpbmxpbmVfZGlzcG">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Livox-mid360">
+<meta property="og:url" content="https://bytebotxplorer.github.io/posts/d1936e8c/index.html">
+<meta property="og:site_name" content="bytebot的blog">
+<meta property="og:description" content="https:&#x2F;&#x2F;news.qq.com&#x2F;rain&#x2F;a&#x2F;20250416A07QMD00  https:&#x2F;&#x2F;livox-wiki-cn.readthedocs.io&#x2F;zh-cn&#x2F;latest&#x2F;introduction&#x2F;livox_scanning_pattern.html?f_link_type&#x3D;f_linkinlinenote&amp;flow_extra&#x3D;eyJpbmxpbmVfZGlzcG">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://bytebotxplorer.github.io/imgs/GEM/gem1.png">
+<meta property="article:published_time" content="2026-03-31T02:23:27.000Z">
+<meta property="article:modified_time" content="2026-07-10T10:28:34.980Z">
+<meta property="article:author" content="ByteBotXplorer">
+<meta property="article:tag" content="Livox">
+<meta property="article:tag" content="激光雷达">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bytebotxplorer.github.io/imgs/GEM/gem1.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Livox-mid360",
+  "url": "https://bytebotxplorer.github.io/posts/d1936e8c/",
+  "image": "https://bytebotxplorer.github.io/imgs/GEM/gem1.png",
+  "datePublished": "2026-03-31T02:23:27.000Z",
+  "dateModified": "2026-07-10T10:28:34.980Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "ByteBotXplorer",
+      "url": "https://bytebotxplorer.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://bytebotxplorer.github.io/posts/d1936e8c/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.7/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#131416')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Livox-mid360',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/gymnasium-minimal.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body><div class="bg-animation" id="web_bg" style="background-color: #ffffff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/imgs/GEM/gem1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">44</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">34</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><!-- 左侧博客信息区域--><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">bytebot的blog</span></a><a class="nav-page-title" href="/"><span class="site-name">Livox-mid360</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Livox-mid360</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-03-31T02:23:27.000Z" title="Created 2026-03-31 10:23:27">2026-03-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-10T10:28:34.980Z" title="Updated 2026-07-10 18:28:34">2026-07-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BC%A0%E6%84%9F%E5%99%A8/">传感器</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>6mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id data-flag-title><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-07-10 18:28:34&quot;}" hidden></div><blockquote>
+<ul>
+<li><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://news.qq.com/rain/a/20250416A07QMD00">https://news.qq.com/rain/a/20250416A07QMD00</a></p>
+</li>
+<li><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://livox-wiki-cn.readthedocs.io/zh-cn/latest/introduction/livox_scanning_pattern.html?f_link_type=f_linkinlinenote&amp;flow_extra=eyJpbmxpbmVfZGlzcGxheV9wb3NpdGlvbiI6MCwiZG9jX3Bvc2l0aW9uIjowLCJkb2NfaWQiOiI2NTFkMzc4NWU0MzZjMTA5LTQxOTVmZTRiZjlhMDJkMDMifQ%3D%3D">https://livox-wiki-cn.readthedocs.io/zh-cn/latest/introduction/livox_scanning_pattern.html?f_link_type=f_linkinlinenote&amp;flow_extra=eyJpbmxpbmVfZGlzcGxheV9wb3NpdGlvbiI6MCwiZG9jX3Bvc2l0aW9uIjowLCJkb2NfaWQiOiI2NTFkMzc4NWU0MzZjMTA5LTQxOTVmZTRiZjlhMDJkMDMifQ%3D%3D</a></p>
+</li>
+</ul>
+</blockquote>
+<p><strong>MEMS 扫描式</strong>-半固态激光雷达</p>
+<p>用微型振镜反射激光，<strong>逐点扫描</strong>场景，通过MEMS振镜偏转控制光束方向</p>
+<h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数项</th>
+<th>官方数值</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>型号</td>
+<td>Mid‑360</td>
+<td></td>
+</tr>
+<tr>
+<td>激光波长</td>
+<td>905 nm</td>
+<td>近红外波段，人眼不可见，穿透雨雾能力优于 1550 nm，成本更低。</td>
+</tr>
+<tr>
+<td>人眼安全</td>
+<td>Class 1（IEC 60825‑1:2014）</td>
+<td>符合 IEC 60825‑1 最高安全等级，<strong>直视激光无伤害</strong>。</td>
+</tr>
+<tr>
+<td>测距（@100 klx）</td>
+<td>40 m @10% 反射率70 m @80% 反射率</td>
+<td>10% 反射率：模拟<strong>沥青路面、深色车</strong>（最严苛场景）；80% 反射率：模拟<strong>路牌、白车、墙面</strong>（理想场景）；100 klx：模拟<strong>正午强光</strong>（户外极限环境）。</td>
+</tr>
+<tr>
+<td>近场盲区</td>
+<td>0.1 m</td>
+<td>从<strong>10 cm 开始</strong>稳定出点，无近场探测盲区。</td>
+</tr>
+<tr>
+<td>FOV</td>
+<td>水平 360°；垂直 -7°～+52°（≈59°）</td>
+<td>水平 360°：<strong>全向无死角</strong>感知；垂直 -7°～+52°：覆盖<strong>地面到上方 5 米</strong>，兼顾路面与低矮障碍物。</td>
+</tr>
+<tr>
+<td>测距精度（1σ）</td>
+<td>≤2 cm @10 m；≤3 cm @0.2 m</td>
+<td>当目标距离雷达 10 米时，单次测量的随机误差，有 68% 的概率不超过 ±2cm。当目标距离雷达 0.2 米（20cm）时，单次测量的随机误差，有 68% 的概率不超过 ±3cm。</td>
+</tr>
+<tr>
+<td>角度精度（1σ）</td>
+<td>&lt;0.15°</td>
+<td>点云<strong>角度误差极小</strong>，物体轮廓清晰。</td>
+</tr>
+<tr>
+<td>点频</td>
+<td>200,000 点 / 秒（第一回波）</td>
+<td>每秒输出 20 万个有效点，<strong>非重复扫描</strong></td>
+</tr>
+<tr>
+<td>帧率</td>
+<td>10 Hz（典型）</td>
+<td></td>
+</tr>
+<tr>
+<td>虚警率（@100 klx）</td>
+<td>&lt;0.01%</td>
+<td>强光下<strong>误报极少</strong>（100 klx ≈ 正午阳光）。</td>
+</tr>
+<tr>
+<td>抗串扰</td>
+<td>支持</td>
+<td></td>
+</tr>
+<tr>
+<td>内置 IMU</td>
+<td>ICM‑40609（6 轴）</td>
+<td>6 轴（加速度 + 陀螺仪），与激光雷达<strong>硬件同步</strong>。</td>
+</tr>
+<tr>
+<td>数据接口</td>
+<td>100BASE‑TX 以太网</td>
+<td></td>
+</tr>
+<tr>
+<td>时间同步</td>
+<td>IEEE 1588‑2008（PTPv2）、GPS</td>
+<td>支持<strong>微秒级</strong>多传感器同步。</td>
+</tr>
+<tr>
+<td>供电</td>
+<td>9–27 V DC</td>
+<td></td>
+</tr>
+<tr>
+<td>功耗</td>
+<td>6.5 W（平均）</td>
+<td></td>
+</tr>
+<tr>
+<td>尺寸</td>
+<td>65×65×60 mm</td>
+<td></td>
+</tr>
+<tr>
+<td>重量</td>
+<td>265 g</td>
+<td></td>
+</tr>
+<tr>
+<td>防护等级</td>
+<td>IP67</td>
+<td><strong>防尘、防水</strong>（可短时浸泡）。</td>
+</tr>
+<tr>
+<td>工作温度</td>
+<td>-20℃～55℃</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code>1σ</code> 是统计学里的 “标准差”，它代表：</p>
+<ul>
+<li><p>测量结果服从正态分布时，有 <strong>68.27% 的概率</strong>，误差落在 ±1σ 范围内；</p>
+</li>
+<li><p>95% 的概率落在 ±2σ 内，99.7% 落在 ±3σ 内。</p>
+<p><code>1σ ≤ 2cm</code> 意味着，大部分测量结果的误差，都不会超过 2cm。</p>
+</li>
+</ul>
+<p>近距离（尤其是 0.1-0.5m）的误差比 10m 时略大，是因为激光脉冲的回波信号在近距离容易饱和。</p>
+<p><img src="https://inews.gtimg.com/om_bt/OF0-RIYT8SNg_7CM_dRmExAhxuMFlcpDYgubR2cUmPp7AAA/641" alt="图片"></p>
+<h1 id="LFS非重复扫描（Non-repetitive-Scanning）"><a href="#LFS非重复扫描（Non-repetitive-Scanning）" class="headerlink" title="LFS非重复扫描（Non-repetitive Scanning）"></a>LFS非重复扫描（Non-repetitive Scanning）</h1><p><strong>每一次扫描的路径都不重复</strong>，随时间累积逐步铺满视场，而非传统雷达固定 “线 + 旋转” 的重复扫描</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>传统重复扫描（如 64 线机械雷达）</th>
+<th>Livox LFS 非重复扫描</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>扫描路径</strong></td>
+<td>固定垂直线列 + 水平旋转，<strong>周期重复</strong></td>
+<td>单光束经光学部件偏转，<strong>路径不重复</strong></td>
+</tr>
+<tr>
+<td><strong>视场覆盖</strong></td>
+<td>瞬时覆盖固定线网，<strong>长期覆盖率难提升</strong>，有盲点Livox</td>
+<td>随积分时间延长，<strong>覆盖率显著提升</strong>，趋近 100%</td>
+</tr>
+<tr>
+<td><strong>点云形态</strong></td>
+<td>规则网格状，线间有空隙</td>
+<td>面状 / 散点分布，累积后更均匀无盲点</td>
+</tr>
+<tr>
+<td><strong>核心优势</strong></td>
+<td>技术成熟</td>
+<td><strong>无盲点、成本低、抗互扰</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol>
+<li><p><strong>单光束 + 动态偏转</strong>：</p>
+<p>以 Mid‑360 为例，内部用双棱镜（或 MEMS 振镜）控制单束激光的水平 / 垂直角度，每一刻的出射方向都不同，没有固定 “线列”。</p>
+</li>
+<li><p><strong>无周期重复</strong>：</p>
+<p>传统雷达每转一圈，扫描线的位置完全一致；LFS 下<strong>同一位置的两次扫描不会走同一条路径</strong>，漏检概率随时间降低</p>
+</li>
+<li><p><strong>靠时间换密度</strong>：</p>
+<p>单点频 20 万点 / 秒（Mid‑360），<strong>累积越久，点云越密</strong>，0.1 秒累积等效 32 线，0.5 秒等效 64 线</p>
+</li>
+</ol>
+<h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><p>主控板、接口板、收发模组和扫描模组</p>
+<p><img src="https://inews.gtimg.com/om_bt/Od6Zi44AEVmx0tABcxDhOnEOFeg632-npk7hQl_wFGLygAA/641" alt="图片"></p>
+<p><img src="https://inews.gtimg.com/om_bt/OU6Lm9kGlx9ibVpXXtXfmZV4tHAQM9sqJcEjTND3ayBPMAA/641" alt="图片"></p>
+<h2 id="激光发射和接收原理"><a href="#激光发射和接收原理" class="headerlink" title="激光发射和接收原理"></a>激光发射和接收原理</h2><p>采用同轴光路：</p>
+<blockquote>
+<p>「同轴光路」：</p>
+<p><strong>发射光和接收光走的是同一条光路，共用一套光学系统</strong>。</p>
+<p>优点：</p>
+<ol>
+<li><p><strong>结构紧凑</strong>：发射和接收共用一套棱镜、透镜，不用做两套独立光学系统，体积能做得很小（Mid-360 只有 65×65×60mm）。</p>
+</li>
+<li><p><strong>光轴一致性好</strong>：发射和接收光轴天然对齐，不会因为装调误差导致漏接信号，接收效率高。</p>
+</li>
+<li><p><strong>成本更低</strong>：光学元件数量少，加工和装配难度降低，适合量产。</p>
+</li>
+</ol>
+</blockquote>
+<p><img src="https://inews.gtimg.com/om_bt/O6O2g9gDYzYpDc2__SZqWS4kiIdEFSFSu0aXh0HtvqHPEAA/641" alt="图片"></p>
+<h2 id="主控板"><a href="#主控板" class="headerlink" title="主控板"></a>主控板</h2><p>主控板位于激光雷达的底部，由于和底壳直接接触，可以更好的散热。主控板主要用于信号处理和系统控制。</p>
+<p>主控板正面</p>
+<p><img src="https://inews.gtimg.com/om_bt/OoTD_UtDlHnwW_80j_UZKXIHJ7em6Sai5VemGr0aisQE4AA/641" alt="主控板正面"></p>
+<p>主控板反面</p>
+<p><img src="https://inews.gtimg.com/om_bt/O7aJbbzs7-JYkLw7mnsbg72HvLQGVyb5qwfwzmDCO68XgAA/1000" alt="主控板反面"></p>
+<h2 id="接口板"><a href="#接口板" class="headerlink" title="接口板"></a>接口板</h2><p>接口板主要用于电机控制、高压控制、数据通信和电源转换。</p>
+<p>接口板的正面：</p>
+<p><img src="https://inews.gtimg.com/om_bt/O0y0q5kdHVJKoyxyX6qZCRMtFALTk4beMs5WHosVAlXbMAA/1000" alt="接口板的正面"></p>
+<p>接口板的背面：</p>
+<p><img src="https://inews.gtimg.com/om_bt/O4jvn3eJvI-0bC6RtkoPrACkDPPgofkBrTc86aXtEGpoYAA/1000" alt="接口板的背面"></p>
+<h2 id="收发模组"><a href="#收发模组" class="headerlink" title="收发模组"></a>收发模组</h2><p>收发模组主要用于激光的发射和接收。</p>
+<p><img src="https://inews.gtimg.com/om_bt/OuX35lhGrYgnQ9HslLNOYI43IOWlBInn21Oyspnw9buVIAA/1000" alt="图片"></p>
+<p>收发模组主要由三部分组成：中框（含透镜和导光柱）、发射板（含EEL激光器）、接收板（含APD接收器）。</p>
+<p><img src="https://inews.gtimg.com/om_bt/O2NXROPqP1xnrPzER7aHAS9gXy4nhFQOntPW5v-AztTUcAA/641" alt="图片"></p>
+<p>EEL激光器发射的激光，先通过柱面透镜进行快轴准直，然后在导光柱中，经过3次反射，到达非球面透镜中央，进行慢轴准直之后，朝上方射出。</p>
+<p><img src="https://inews.gtimg.com/om_bt/O4f4758VcpX5zMSvbMlSAyaW0JjwUARVXfvocPO9fSOSwAA/641" alt="图片来源：大疆创新专利CN 216209860 U"></p>
+<p>收发模组的组装过程：</p>
+<ol>
+<li>把导光柱安装到测距中框，然后用胶水固定，保证光路中心位置不偏移；</li>
+<li>安装透镜，把发射板对焦到光路的焦心上，之后把APD和EEL逐一对焦完成。</li>
+<li>进行激光出射功率校准，即校准激光器输入电压和光功率之间的关系。</li>
+</ol>
+<h2 id="扫描模组"><a href="#扫描模组" class="headerlink" title="扫描模组"></a>扫描模组</h2><p>Mid-360使用半固态扫描技术，激光收发模块是固定的，通过转镜旋转实现激光的扫描。</p>
+<p><img src="https://inews.gtimg.com/om_bt/OUOAoDSCfI4h5MOzmzEJ8GmFIVc0uqQYI5sA9llMfg6SEAA/641" alt="图片"></p>
+<p>两片挡片的主要作用是，阻挡上电机棱镜与球罩之间多重反射光，减少FOV下底部和上顶部FOV的光强，减少内部杂散光的反射。</p>
+<p>对于上电机、棱镜与安装座的贴合面，全部做了涂黑消光，主要用于解决FOV下视角的高反光问题。</p>
+<p>电机内部和测距内部也全部喷涂消光材质，用于消除内部杂散光，减少内部反射。</p>
+<p><img src="https://inews.gtimg.com/om_bt/OKyD8wkFPLQx13SJyIonErW7gXV-bX-aYuvwQXmWGhY94AA/641" alt="图片"></p>
+<ul>
+<li><p>电机1（带动楔形棱镜）采用定制转子，磁铁直接粘接于轴上。轴承轴向采用内外圈双支点反向固定，径向与轴及壳体使用胶水固定。电机1采用了两个轴承，主要作用是为了减小电机1旋转时的晃动，从而减少码盘的读取误差。不过，双轴承的设计，会导致电机启动电流增大到1A，在转速稳定后，电流维持在0.6A左右。</p>
+</li>
+<li><p>电机2（带动直角棱镜）的转子由一个轴承对其进行旋转支承，与电机1转子共用一根主轴。主轴竖直方向的轴向支撑力，主要由胶接力和装配摩擦力提供。</p>
+</li>
+<li><p>两个电机均为无刷电机，独立控制。两个电机转速固定：电机1转速是10271 rpm，电机2的转速是10865 rpm，该转速是根据点云覆盖密度以及上下边缘的角度精度需求计算得到。</p>
+</li>
+<li><p>码盘为光编反射式码盘，64码道（早期还有48和24两个码道方案）。光编反射式码盘对表面反光强度有一定要求，强度太低会导致丟齿。</p>
+</li>
+<li><p>楔形棱镜底面是平的，顶面呈斜切的形状。</p>
+<p>楔形棱镜边缘也都做了涂黑处理，用于消除边缘玻璃与金属之间的反射光。</p>
+</li>
+<li></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://bytebotxplorer.github.io">ByteBotXplorer</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://bytebotxplorer.github.io/posts/d1936e8c/">https://bytebotxplorer.github.io/posts/d1936e8c/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE/">激光雷达</a><a class="post-meta__tags" href="/tags/Livox/">Livox</a></div><div class="post-share"><div class="social-share" data-image="/imgs/GEM/gem1.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/5794176e/" title="雷达"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">雷达</div></div><div class="info-2"><div class="info-item-1">更新雷达相关知识</div></div></div></a><a class="pagination-related" href="/posts/d4fa5225/" title="SLAM中的耦合"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">SLAM中的耦合</div></div><div class="info-2"><div class="info-item-1">在SLAM中，“耦合”（Coupling）指的是不同模块或变量之间的相互影响和依赖关系。</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/f1c86058/" title="Livox"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2026-07-10</div><div class="info-item-2">Livox</div></div><div class="info-2"><div class="info-item-1">LivoxLivox （览沃科技）是DJI大疆创新孵化的独立公司，主要生产 LiDAR 激光雷达，并提供 SDK、ROS 驱动和相关开发工具。 123456789101112131415Livox├── 公司/品牌├── Livox LiDAR 产品│   ├── Mid-40│   ├── Mid-70│   ├── Horizon│   ├── Avia│   ├── Tele-15│   ├── HAP│   ├── Mid-360│   └── Mid-360S├── Livox SDK   第一代 ...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">参数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LFS%E9%9D%9E%E9%87%8D%E5%A4%8D%E6%89%AB%E6%8F%8F%EF%BC%88Non-repetitive-Scanning%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">LFS非重复扫描（Non-repetitive Scanning）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BF%80%E5%85%89%E5%8F%91%E5%B0%84%E5%92%8C%E6%8E%A5%E6%94%B6%E5%8E%9F%E7%90%86"><span class="toc-number">3.1.</span> <span class="toc-text">激光发射和接收原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%8E%A7%E6%9D%BF"><span class="toc-number">3.2.</span> <span class="toc-text">主控板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%9D%BF"><span class="toc-number">3.3.</span> <span class="toc-text">接口板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B6%E5%8F%91%E6%A8%A1%E7%BB%84"><span class="toc-number">3.4.</span> <span class="toc-text">收发模组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F%E6%A8%A1%E7%BB%84"><span class="toc-number">3.5.</span> <span class="toc-text">扫描模组</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By ByteBotXplorer</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="external nofollow noopener noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></span></div><div class="footer_custom_text">Robotics, SLAM, Math, Code.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Toggle Between Traditional and Simplified Chinese">繁</button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><script src="/js/tw_cn.js?v=5.5.3"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.7/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zindex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="输入关键词…" type="text"></div><hr><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.3"></script></div></div></body></html>

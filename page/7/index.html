@@ -1,0 +1,292 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>bytebot的blog - Let's explore the world!</title><meta name="author" content="ByteBotXplorer"><meta name="copyright" content="ByteBotXplorer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="相见即缘分">
+<meta property="og:type" content="website">
+<meta property="og:title" content="bytebot的blog">
+<meta property="og:url" content="https://bytebotxplorer.github.io/page/7/index.html">
+<meta property="og:site_name" content="bytebot的blog">
+<meta property="og:description" content="相见即缘分">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://bytebotxplorer.github.io/imgs/GEM/gem1.png">
+<meta property="article:author" content="ByteBotXplorer">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="SLAM">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bytebotxplorer.github.io/imgs/GEM/gem1.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://bytebotxplorer.github.io/page/7/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.7/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#131416')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'bytebot的blog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><link rel="stylesheet" href="/css/gymnasium-minimal.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body><div class="bg-animation" id="web_bg" style="background-color: #ffffff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/imgs/GEM/gem1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">44</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">34</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><!-- 左侧博客信息区域--><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">bytebot的blog</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><h1 class="title-seo">bytebot的blog</h1></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/86ce9ef3/" title="mermaid快速入门1——流程图">mermaid快速入门1——流程图</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time datetime="2026-02-05T08:52:42.874Z" title="Updated 2026-02-05 16:52:42">2026-02-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/markdown/">markdown</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mermaid/">mermaid</a></span></div><div class="content">什么是Mermaid？ Mermaid 是一款基于 JavaScript 的绘图和制图工具，它使用类似 Markdown 的文本定义和一个渲染器来创建和修改复杂图表。Mermaid 本质是 “用文字写图表的语法”，但它需要“渲染工具” 把文字转换成图表（就像 Markdown 需要编辑器渲染成排版好的文字）。 项目地址：https://github.com/mermaid-js/mermaid Mermaid Live 编辑器中提供了图表示例，它也是一个很好的练习场所。  怎么使用？ 使用特定的Mermaid...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/657854d2/" title="最优化基础——一维搜索">最优化基础——一维搜索</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time datetime="2026-02-12T03:33:06.245Z" title="Updated 2026-02-12 11:33:06">2026-02-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%80%E4%BC%98%E5%8C%96/">最优化</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80/">最优化基础</a></span></div><div class="content">暴力搜索 / 区间消去 / 黄金分割 / 斐波那契法</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/4a9e635/" title="显著图">显著图</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time datetime="2026-01-29T03:43:36.430Z" title="Updated 2026-01-29 11:43:36">2026-01-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a></span></div><div class="content">概念显著图(Saliency map)是一种突出人们眼睛首先关注的区域的图像。显著图的目标是反映像素对人类视觉系统的重要程度。 显著性是图像的突出部分，我们的大脑会特别关注这个部分。例如，大家有没有曾经在看广告的时候被一些特别的内容吸引，为此我们还特意停下来多看了一会儿？这就是广告的显著性，即使让我们可以一眼看到广告，也会被他吸引。 形式输入：原始图像 输出：一张灰度热力图  亮色区域：显著性高，通常对应目标或关键区域  暗色区域：显著性低，通常为背景或冗余信息   作用显著图的目标并不是进行精确分割，而是衡...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/90af7429/" title="深度图">深度图</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time datetime="2026-01-29T03:43:36.431Z" title="Updated 2026-01-29 11:43:36">2026-01-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a></span></div><div class="content">概念深度图（depth map）是一种灰度图像，其中每个像素点距离相机的距离信息。它是计算机视觉中常用的一种图像表示方式，用于描述场景的三维结构。  获取 通过激光雷达或结构光等传感器获取深度信息，再将其转换为深度图像。 利用双目或多目相机的视差信息计算深度，再将其转换为深度图像。 利用先验知识或模型对图像进行分析，推测出每个像素点的深度信息。  激光雷达/结构光激光雷达或结构光等传感器获得的深度，可以得到绝对深度，因为他们的数据是测出来的，根据TOF计算得到的真实距离。所以在连续的图片序列中，由于深度是绝对...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/7c0b9456/" title="皮亚诺公理体系">皮亚诺公理体系</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time datetime="2026-01-26T16:28:11.522Z" title="Updated 2026-01-27 00:28:11">2026-01-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Math/">Math</a></span></div><div class="content">皮亚诺公理体系是意大利数学家朱塞佩・皮亚诺于 1889 年提出的关于自然数的公理系统，旨在为算术提供严格基础，核心是 5 条公理，可完整定义自然数集并支撑数学归纳法与算术运算。 公理 存在初始元：0 是自然数 后继封闭性：每个自然数 a 都有唯一确定的后继数 a’（或记为 S (a)），且 a’ 也是自然数。直观上 a’ = a + 1。 无前驱性：0 不是任何自然数的后继数，排除循环或回溯结构。 后继单射性：若 b’ = c’，则 b = c，保证每个数的后继唯一，无分支或重复。 归纳公理（数学归纳法原理）...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/6356d855/" title="最优化基础——基本概念">最优化基础——基本概念</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time datetime="2026-01-29T03:43:20.470Z" title="Updated 2026-01-29 11:43:20">2026-01-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%80%E4%BC%98%E5%8C%96/">最优化</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80/">最优化基础</a></span></div><div class="content">凸集、凸函数 凸集：假设集合 $X \subseteq \mathbb{R}^n$，如果对于任意两点 $ \mathbf{x}_1, \mathbf{x}_2 \in X$ 和 $\alpha \in (0, 1)$，总有 $\alpha \cdot \mathbf{x}_1 + (1 - \alpha) \cdot \mathbf{x}_2 \in X$ （点$\mathbf{x}_1$和点$\mathbf{x}_2$连线任意一点），则 $X$ 是凸集合。  非凸集合     凸函数：假设集合 $X \su...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/a6b1e5df/" title="键盘布局">键盘布局</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time datetime="2026-01-26T16:22:43.491Z" title="Updated 2026-01-27 00:22:43">2026-01-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></span></div><div class="content">Ctrl、Alt、F4…每个按键都是怎么来的？｜技术｜播客｜原来是这样 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/c8e7894a/" title="C++中的编程概念">C++中的编程概念</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time datetime="2026-01-26T16:22:43.490Z" title="Updated 2026-01-27 00:22:43">2026-01-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/C/">C++</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/C/">C++</a></span></div><div class="content">前向声明前向声明（Forward Declaration）在使用某个类/函数/枚举之前，告诉编译器某个类型存在，但不提供完整定义。编译器只需要知道 “有这个标识符” 就能进行语法检查，而不需要知道它的具体实现细节。 概念123// 前向声明告诉编译器某个类型存在，但不提供完整定义class MyClass;     // 前向声明struct MyStruct;   // 前向声明 为什么需要？ 解决循环依赖  A.h 包含 B.h，B.h 又包含 A.h，直接包含会导致编译报错 12345678910111...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/14b8e558/" title="C++内存分区">C++内存分区</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time datetime="2026-01-26T16:22:43.490Z" title="Updated 2026-01-27 00:22:43">2026-01-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/C/">C++</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/C/">C++</a></span></div><div class="content">内存分区概念C++程序在运行时，内存通常被分为五大区域（代码、全局、常量、堆、栈），也可以简化为四个分区（代码、全局、堆、栈）。 代码区（Code/Text Segment） 存放程序（编译后）的机器指令 通常只读  全局区（Global Area） 已初始化的全局/静态变量（Data段） 未初始化的全局/静态变量（BSS段） 全局常量、字符串常量（.rodata常量区） 生命周期：从程序开始到结束  堆区（Heap） 使用 new 或 malloc 动态分配 手动释放：delete / free 生命周期由...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/fb005d31/" title="前端和后端">前端和后端</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time datetime="2026-01-26T16:22:43.488Z" title="Updated 2026-01-27 00:22:43">2026-01-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></span></div><div class="content">把整个互联网产品（网站 / APP / 小程序）比作一家线下超市： 前端：超市的购物区（货架、收银台、导购员、购物车）—— 用户直接接触，负责视觉展示和交互体验，用户能看、能摸、能操作； 后端：超市的仓库、后台办公室、物流系统、财务系统—— 用户完全接触不到，负责数据管理、业务规则、资源调度，支撑前端的所有操作； 前后端的连接：超市的导购员喊仓库补货、收银台连财务系统—— 前端通过「约定的规则」向后端要数据 / 提需求，后端处理后反馈结果。 一、前端开发：做 “用户能看见、能操作的一切”核心定位用户侧的开发，...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/6/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/#content-inner">8</a><a class="page-number" href="/page/9/#content-inner">9</a><a class="extend next" rel="next" href="/page/8/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/imgs/GEM/gem1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info-name">ByteBotXplorer</div><div class="author-info-description">相见即缘分</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">44</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">34</div></a></div><a id="card-info-btn" target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/ShaoHLeon"><i class="fab fa-github"></i><span>GitHub</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/ShaoHLeon" target="_blank" title="Github" rel="external nofollow noopener noreferrer"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/1293939883" target="_blank" title="Bilibili" rel="external nofollow noopener noreferrer"><i class="fab fa-bilibili" style="color: #00A1D6;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">Notes on robotics, SLAM, vision, math and code.</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/f59bf858/" title="CAN">CAN</a><time datetime="2026-08-09T14:53:03.422Z" title="Updated 2026-08-09 22:53:03">2026-08-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/5b0dea07/" title="Deep-Q-Network">Deep-Q-Network</a><time datetime="2026-07-14T03:57:00.349Z" title="Updated 2026-07-14 11:57:00">2026-07-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/6cc59b5f/" title="Q-learning">Q-learning</a><time datetime="2026-07-13T02:26:51.763Z" title="Updated 2026-07-13 10:26:51">2026-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/d1936e8c/" title="Livox-mid360">Livox-mid360</a><time datetime="2026-07-10T10:28:34.980Z" title="Updated 2026-07-10 18:28:34">2026-07-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/9edb99c1/" title="nmcli">nmcli</a><time datetime="2026-07-10T10:21:35.054Z" title="Updated 2026-07-10 18:21:35">2026-07-10</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            <a class="card-more-btn" href="/categories/" title="View More">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/IMU/"><span class="card-category-list-name">IMU</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/IT/"><span class="card-category-list-name">IT</span><span class="card-category-list-count">2</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"><span class="card-category-list-name">计算机网络</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Math/"><span class="card-category-list-name">Math</span><span class="card-category-list-count">4</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Math/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">深度学习</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Python/"><span class="card-category-list-name">Python</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/RL/"><span class="card-category-list-name">RL</span><span class="card-category-list-count">2</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 1.43em; color: #99a6b9">C++</a> <a href="/tags/Docker/" style="font-size: 1.1em; color: #999">Docker</a> <a href="/tags/FasterLIO/" style="font-size: 1.1em; color: #999">FasterLIO</a> <a href="/tags/HTTP/" style="font-size: 1.1em; color: #999">HTTP</a> <a href="/tags/IMU/" style="font-size: 1.1em; color: #999">IMU</a> <a href="/tags/IT/" style="font-size: 1.1em; color: #999">IT</a> <a href="/tags/Livox/" style="font-size: 1.17em; color: #999c9f">Livox</a> <a href="/tags/NetworkX/" style="font-size: 1.17em; color: #999c9f">NetworkX</a> <a href="/tags/OpenCV/" style="font-size: 1.1em; color: #999">OpenCV</a> <a href="/tags/Python/" style="font-size: 1.3em; color: #99a1ac">Python</a> <a href="/tags/RL/" style="font-size: 1.17em; color: #999c9f">RL</a> <a href="/tags/ROS/" style="font-size: 1.5em; color: #99a9bf">ROS</a> <a href="/tags/SLAM/" style="font-size: 1.23em; color: #999ea6">SLAM</a> <a href="/tags/SLAM%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">SLAM数学基础</a> <a href="/tags/Ubuntu%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 1.1em; color: #999">Ubuntu环境配置</a> <a href="/tags/Ubuntu%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" style="font-size: 1.1em; color: #999">Ubuntu软件安装</a> <a href="/tags/VLN/" style="font-size: 1.17em; color: #999c9f">VLN</a> <a href="/tags/VPN/" style="font-size: 1.1em; color: #999">VPN</a> <a href="/tags/anaconda/" style="font-size: 1.1em; color: #999">anaconda</a> <a href="/tags/markdown/" style="font-size: 1.3em; color: #99a1ac">markdown</a> <a href="/tags/mermaid/" style="font-size: 1.17em; color: #999c9f">mermaid</a> <a href="/tags/python/" style="font-size: 1.17em; color: #999c9f">python</a> <a href="/tags/pytorch/" style="font-size: 1.1em; color: #999">pytorch</a> <a href="/tags/rosmasterM1/" style="font-size: 1.17em; color: #999c9f">rosmasterM1</a> <a href="/tags/ubuntu/" style="font-size: 1.1em; color: #999">ubuntu</a> <a href="/tags/word/" style="font-size: 1.1em; color: #999">word</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 1.1em; color: #999">协议</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 1.1em; color: #999">图像处理</a> <a href="/tags/%E5%BA%94%E7%94%A8%E5%B1%82/" style="font-size: 1.1em; color: #999">应用层</a> <a href="/tags/%E5%BB%BA%E5%9B%BE/" style="font-size: 1.17em; color: #999c9f">建图</a> <a href="/tags/%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8/" style="font-size: 1.1em; color: #999">显卡驱动</a> <a href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80/" style="font-size: 1.37em; color: #99a4b2">最优化基础</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.1em; color: #999">机器学习</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 1.1em; color: #999">树莓派</a> <a href="/tags/%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE/" style="font-size: 1.17em; color: #999c9f">激光雷达</a> <a href="/tags/%E7%82%B9%E4%BA%91/" style="font-size: 1.1em; color: #999">点云</a> <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" style="font-size: 1.1em; color: #999">目标检测</a> <a href="/tags/%E7%9B%B8%E6%9C%BA/" style="font-size: 1.17em; color: #999c9f">相机</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">算法</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 1.17em; color: #999c9f">编程</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      <a class="card-more-btn" href="/archives/" title="View More">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/08/">
+            <span class="card-archive-list-date">
+              August 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/07/">
+            <span class="card-archive-list-date">
+              July 2026
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/06/">
+            <span class="card-archive-list-date">
+              June 2026
+            </span>
+            <span class="card-archive-list-count">8</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/05/">
+            <span class="card-archive-list-date">
+              May 2026
+            </span>
+            <span class="card-archive-list-count">11</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/04/">
+            <span class="card-archive-list-date">
+              April 2026
+            </span>
+            <span class="card-archive-list-count">8</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/03/">
+            <span class="card-archive-list-date">
+              March 2026
+            </span>
+            <span class="card-archive-list-count">19</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/02/">
+            <span class="card-archive-list-date">
+              February 2026
+            </span>
+            <span class="card-archive-list-count">9</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/01/">
+            <span class="card-archive-list-date">
+              January 2026
+            </span>
+            <span class="card-archive-list-count">29</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">89</div></div><div class="webinfo-item"><div class="item-name">Total Word Count :</div><div class="item-count">82.1k</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastpushdate="2026-08-09T14:58:26.667Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By ByteBotXplorer</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="external nofollow noopener noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></span></div><div class="footer_custom_text">Robotics, SLAM, Math, Code.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="Toggle Between Traditional and Simplified Chinese">繁</button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><script src="/js/tw_cn.js?v=5.5.3"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.7/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zindex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="输入关键词…" type="text"></div><hr><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.3"></script></div></div></body></html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ROS基础概念 | bytebot的blog</title><meta name="author" content="ByteBotXplorer"><meta name="copyright" content="ByteBotXplorer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="句柄 ros::NodeHandle nh;  含义：创建了一个命名空间为全局（或相对于节点名）的节点句柄。 用途：这个句柄通常用于发布话题、订阅话题、提供服务、调用服务以及操作参数服务器。 命名空间：如果节点启动时指定了命名空间（例如 ns&#x3D;my_ns），那么通过 nh 创建的话题或服务会自动带有该前缀（例如 &#x2F;my_ns&#x2F;chatter）。如果没有指定，则通常在全局命名空间下。   ros::">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ROS基础概念">
+<meta property="og:url" content="https://bytebotxplorer.github.io/posts/ee5fce82/index.html">
+<meta property="og:site_name" content="bytebot的blog">
+<meta property="og:description" content="句柄 ros::NodeHandle nh;  含义：创建了一个命名空间为全局（或相对于节点名）的节点句柄。 用途：这个句柄通常用于发布话题、订阅话题、提供服务、调用服务以及操作参数服务器。 命名空间：如果节点启动时指定了命名空间（例如 ns&#x3D;my_ns），那么通过 nh 创建的话题或服务会自动带有该前缀（例如 &#x2F;my_ns&#x2F;chatter）。如果没有指定，则通常在全局命名空间下。   ros::">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://bytebotxplorer.github.io/imgs/GEM/gem1.png">
+<meta property="article:published_time" content="2026-03-14T03:31:50.000Z">
+<meta property="article:modified_time" content="2026-03-16T10:22:27.927Z">
+<meta property="article:author" content="ByteBotXplorer">
+<meta property="article:tag" content="ROS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bytebotxplorer.github.io/imgs/GEM/gem1.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ROS基础概念",
+  "url": "https://bytebotxplorer.github.io/posts/ee5fce82/",
+  "image": "https://bytebotxplorer.github.io/imgs/GEM/gem1.png",
+  "datePublished": "2026-03-14T03:31:50.000Z",
+  "dateModified": "2026-03-16T10:22:27.927Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "ByteBotXplorer",
+      "url": "https://bytebotxplorer.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://bytebotxplorer.github.io/posts/ee5fce82/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.7/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#131416')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ROS基础概念',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/gymnasium-minimal.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body><div class="bg-animation" id="web_bg" style="background-color: #ffffff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/imgs/GEM/gem1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">44</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">34</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><!-- 左侧博客信息区域--><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">bytebot的blog</span></a><a class="nav-page-title" href="/"><span class="site-name">ROS基础概念</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">ROS基础概念</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-03-14T03:31:50.000Z" title="Created 2026-03-14 11:31:50">2026-03-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-03-16T10:22:27.927Z" title="Updated 2026-03-16 18:22:27">2026-03-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ROS/">ROS</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">2.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>8mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id data-flag-title><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-03-16 18:22:27&quot;}" hidden></div><h1 id="句柄"><a href="#句柄" class="headerlink" title="句柄"></a>句柄</h1><ul>
+<li><p><strong><code>ros::NodeHandle nh;</code></strong></p>
+<ul>
+<li><strong>含义</strong>：创建了一个命名空间为全局（或相对于节点名）的节点句柄。</li>
+<li><strong>用途</strong>：这个句柄通常用于<strong>发布话题</strong>、<strong>订阅话题</strong>、<strong>提供服务</strong>、<strong>调用服务</strong>以及操作<strong>参数服务器</strong>。</li>
+<li><strong>命名空间</strong>：如果节点启动时指定了命名空间（例如 <code>ns=my_ns</code>），那么通过 <code>nh</code> 创建的话题或服务会自动带有该前缀（例如 <code>/my_ns/chatter</code>）。如果没有指定，则通常在全局命名空间下。</li>
+</ul>
+</li>
+<li><p><strong><code>ros::NodeHandle private_nh(&quot;~&quot;);</code></strong></p>
+<ul>
+<li><strong>含义</strong>：创建了一个<strong>私有</strong>节点句柄。</li>
+<li><strong>参数 <code>&quot;~&quot;</code></strong>：这个波浪号符号在 ROS 中代表“私有命名空间”。</li>
+<li><strong>命名空间</strong>：私有命名空间通常解析为 <code>&lt;node_name&gt;</code>。例如，如果你的节点名是 <code>my_node</code>，那么通过 <code>private_nh</code> 访问的资源路径通常是 <code>/my_node/...</code>，即<em>通常解析为 <code>/节点名/话题名</code></em>。</li>
+<li><strong>用途</strong>：这个句柄主要用于<strong>获取该节点特有的参数</strong>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>在ROS底层实现中，<code>NodeHandle</code>是一个类，充当ROS节点与ROS主节点以及其他节点通信的入口点。</p>
+<ul>
+<li><p><strong>构造与注册</strong></p>
+<p>当创建一个<code>NodeHandle</code>对象时，会引用底层节点的实例。如果这是该节点创建的第一个句柄，它会触发节点与ROS Master的连接握手过程。</p>
+</li>
+<li><p><strong>命名空间解析</strong></p>
+<ul>
+<li><code>nh</code>使用全局或相对命名空间。</li>
+<li><code>private_nh</code>在构造时接收<code>~</code>，内部逻辑会将后续的操作名称前缀加上当前节点的名称。</li>
+</ul>
+</li>
+<li><p><strong>资源管理</strong></p>
+<p><code>NodeHandle</code> 管理着发布者、订阅者、服务等的生命周期。当 <code>NodeHandle</code> 对象被销毁（例如离开作用域）时，它通常会自动注销由它创建的所有发布者、订阅者等资源。</p>
+</li>
+</ul>
+<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>用于区分“全局/公共资源”和“私有/局部配置”。</p>
+<ul>
+<li><strong><code>nh</code> (公共句柄)</strong>：<ul>
+<li>用于节点之间的数据传输。</li>
+<li>例如：订阅激光雷达数据 (<code>/scan</code>)，发布速度控制指令 (<code>/cmd_vel</code>)。</li>
+</ul>
+</li>
+<li><strong><code>private_nh</code> (私有句柄)</strong>：<ul>
+<li>用于读取 <strong>Launch 文件</strong> 中为该特定节点配置的参数。</li>
+<li>例如：读取机器人的轮距、最大速度、PID 参数等。</li>
+</ul>
+</li>
+</ul>
+<h2 id="从参数服务器中读取参数"><a href="#从参数服务器中读取参数" class="headerlink" title="从参数服务器中读取参数"></a>从参数服务器中读取参数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">private_nh.<span class="built_in">param</span>(<span class="string">&quot;base_global_planner&quot;</span>, global_planner, std::<span class="built_in">string</span>(<span class="string">&quot;navfn/NavfnROS&quot;</span>));</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>调用对象</strong>：<code>private_nh</code><ul>
+<li>这是一个 <code>ros::NodeHandle</code> 类的对象（通常是一个私有句柄）。</li>
+<li>它表示我们要在这个句柄对应的命名空间（通常是节点自己的私有命名空间，如 <code>/move_base</code>）下查找参数。</li>
+</ul>
+</li>
+<li><strong>函数名</strong>：<code>.param</code><ul>
+<li>这是 <code>NodeHandle</code> 类的一个成员函数模板。</li>
+<li>它的作用是：<strong>尝试读取参数，如果读取失败（参数不存在），则使用默认值。</strong></li>
+</ul>
+</li>
+<li><strong>参数列表（三个参数）</strong>：<ul>
+<li><strong>参数 1：<code>&quot;base_global_planner&quot;</code></strong><ul>
+<li><strong>类型</strong>：<code>std::string</code>（字符串字面量自动转换）。</li>
+<li><strong>含义</strong>：<strong>参数名</strong>（Key）。告诉 ROS 去参数服务器里找叫这个名字的参数。</li>
+</ul>
+</li>
+<li><strong>参数 2：<code>global_planner</code></strong><ul>
+<li><strong>类型</strong>：引用（Reference）。</li>
+<li><strong>含义</strong>：<strong>存储变量</strong>（Output Parameter）。</li>
+<li><strong>作用</strong>：这是一个<strong>输出参数</strong>。如果参数服务器里找到了对应的值，这个值会被赋值给 <code>global_planner</code> 变量。</li>
+</ul>
+</li>
+<li><strong>参数 3：<code>std::string(&quot;navfn/NavfnROS&quot;)</code></strong><ul>
+<li><strong>类型</strong>：<code>std::string</code>。</li>
+<li><strong>含义</strong>：<strong>默认值</strong>（Default Value）。</li>
+<li><strong>作用</strong>：如果参数服务器里<strong>没有</strong>找到 <code>&quot;base_global_planner&quot;</code> 这个参数，那么 <code>global_planner</code> 就会被赋值为 <code>&quot;navfn/NavfnROS&quot;</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="通信连接"><a href="#通信连接" class="headerlink" title="通信连接"></a>通信连接</h2><h3 id="advertise"><a href="#advertise" class="headerlink" title="advertise"></a>advertise</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vel_pub_ = nh.<span class="built_in">advertise</span>&lt;geometry_msgs::Twist&gt;(<span class="string">&quot;cmd_vel&quot;</span>, <span class="number">1</span>); <span class="comment">// 控制指令发布：向底盘发送线速度/角速度</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p><code>vel_pub_</code> (左值)</p>
+<ul>
+<li><p><strong>含义</strong>：这是一个成员变量名。</p>
+</li>
+<li><p><strong>类型</strong>：它的类型是 <code>ros::Publisher</code>。</p>
+</li>
+<li><p><strong>作用</strong>：这个变量用来保存创建好的发布者对象的“句柄”。后续如果想发布速度消息，必须使用这个变量（例如 <code>vel_pub_.publish(msg)</code>）。</p>
+</li>
+</ul>
+</li>
+<li><h4 id="nh-advertise-lt-gt-函数调用"><a href="#nh-advertise-lt-gt-函数调用" class="headerlink" title="nh.advertise&lt;...&gt;(...) (函数调用)"></a><code>nh.advertise&lt;...&gt;(...)</code> (函数调用)</h4><ul>
+<li><strong><code>nh</code></strong>：是 <code>ros::NodeHandle</code> 类的对象，代表节点与 ROS 系统的连接接口。</li>
+<li><strong><code>.advertise</code></strong>：这是 <code>NodeHandle</code> 类的一个<strong>成员函数模板</strong>。它的作用是告诉 ROS Master：“我要在这个话题上发布消息，请帮我建立连接。”</li>
+</ul>
+</li>
+<li><h4 id="lt-geometry-msgs-Twist-gt-模板参数"><a href="#lt-geometry-msgs-Twist-gt-模板参数" class="headerlink" title="&lt;geometry_msgs::Twist&gt; (模板参数)"></a><code>&lt;geometry_msgs::Twist&gt;</code> (模板参数)</h4><ul>
+<li><strong>含义</strong>：这是指定发布消息的<strong>数据类型</strong>。</li>
+<li><strong>语法</strong>：尖括号 <code>&lt;&gt;</code> 是 C++ 模板的语法。</li>
+<li><strong>内容</strong>：<code>geometry_msgs::Twist</code> 是 ROS 中定义的一种消息类型，专门用于表示机器人的速度（包含线速度 x, y, z 和角速度 x, y, z）。</li>
+<li><strong>作用</strong>：它告诉 <code>advertise</code> 函数，我们将来要通过这个发布者发送的数据结构是 <code>geometry_msgs::Twist</code> 格式的。这确保了类型安全——如果试图发送 <code>LaserScan</code> 类型的数据，编译器会报错。</li>
+</ul>
+</li>
+<li><h4 id="quot-cmd-vel-quot-1-函数参数"><a href="#quot-cmd-vel-quot-1-函数参数" class="headerlink" title="(&quot;cmd_vel&quot;, 1) (函数参数)"></a><code>(&quot;cmd_vel&quot;, 1)</code> (函数参数)</h4><p>这是传给 <code>advertise</code> 函数的两个实际参数：</p>
+<ol>
+<li><strong><code>&quot;cmd_vel&quot;</code></strong>：<ul>
+<li><strong>类型</strong>：<code>std::string</code>。</li>
+<li><strong>含义</strong>：<strong>话题名称</strong>。</li>
+<li><strong>作用</strong>：发布者会在名为 <code>/cmd_vel</code>（或相对于命名空间的 <code>cmd_vel</code>）的话题上广播消息。订阅者（如底层驱动节点）必须订阅同样名称的话题才能收到数据。</li>
+</ul>
+</li>
+<li><strong><code>1</code></strong>：<ul>
+<li><strong>类型</strong>：<code>unsigned int</code> (无符号整数)。</li>
+<li><strong>含义</strong>：<strong>消息队列长度</strong>。</li>
+<li><strong>作用</strong>：如果发布消息的速度很快，而接收或处理的速度很慢，消息就会在缓冲区中堆积。这个参数指定了缓冲区最多能存多少条消息。</li>
+<li><strong>为什么是 1？</strong>：对于控制指令（如 <code>cmd_vel</code>），我们通常只关心<strong>最新的</strong>指令。旧的指令（比如 0.1 秒前的速度）如果还没发出去，就已经过时了，直接丢弃即可。所以设置得比较小（通常是 1），可以保证机器人响应的实时性，避免延迟。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="subscribe"><a href="#subscribe" class="headerlink" title="subscribe"></a>subscribe</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ros::NodeHandle <span class="title">simple_nh</span><span class="params">(<span class="string">&quot;move_base_simple&quot;</span>)</span></span>;</span><br><span class="line">goal_sub_ = simple_nh.<span class="built_in">subscribe</span>&lt;geometry_msgs::PoseStamped&gt;(<span class="string">&quot;goal&quot;</span>, <span class="number">1</span>, [<span class="keyword">this</span>](<span class="keyword">auto</span>&amp;%<span class="number">20</span>goal)&#123; <span class="built_in">goalCB</span>(goal); &#125;);</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p><code>goal_sub_</code> (左值)</p>
+<ul>
+<li><p><strong>类型</strong>：<code>ros::Subscriber</code>。</p>
+</li>
+<li><p><strong>含义</strong>：这是一个成员变量。</p>
+</li>
+<li><p><strong>作用</strong>：保存订阅者的句柄。只要 <code>goal_sub_</code> 存在（没有被销毁），ROS 就会一直保持对 <code>&quot;goal&quot;</code> 话题的订阅。如果 <code>goal_sub_</code> 被销毁，订阅就会自动断开。</p>
+</li>
+</ul>
+</li>
+<li><p><code>simple_nh.subscribe&lt;...&gt;(...)</code> (函数调用)</p>
+<ul>
+<li><p><strong><code>simple_nh</code></strong>：节点句柄 (<code>NodeHandle</code>)。</p>
+</li>
+<li><p><strong><code>.subscribe</code></strong>：成员函数，用于订阅话题。</p>
+</li>
+<li><p><strong><code>&lt;geometry_msgs::PoseStamped&gt;</code></strong>：<strong>模板参数</strong>。</p>
+<ul>
+<li>指定订阅的消息类型。这里表示只关心 <code>geometry_msgs::PoseStamped</code> 类型的消息。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>&quot;goal&quot;</code> 和 <code>1</code> (函数参数)</p>
+<p>这是传给 <code>subscribe</code> 函数的前两个参数：</p>
+<ol>
+<li><strong><code>&quot;goal&quot;</code></strong>：<strong>话题名称</strong>。我们要监听这个名字的话题。</li>
+<li><strong><code>1</code></strong>：<strong>队列大小</strong>。如果接收消息的速度快于处理速度，缓冲区最多存 1 条消息（新的会覆盖旧的）。</li>
+</ol>
+</li>
+<li><p><code>[this](auto&amp; goal){ goalCB(goal); }</code> (回调函数 - 重点)</p>
+<ol>
+<li><strong><code>[this]</code> (捕获子句)</strong>：<ul>
+<li><strong>含义</strong>：让 Lambda 表达式能够访问当前类的成员。</li>
+<li><strong>作用</strong>：因为我们在 Lambda 内部调用了 <code>goalCB</code>，这是当前类的成员函数。如果不捕获 <code>this</code>，Lambda 就不知道 <code>goalCB</code> 是谁，编译会报错。</li>
+</ul>
+</li>
+<li><strong><code>(auto&amp; goal)</code> (参数列表)</strong>：<ul>
+<li><strong><code>goal</code></strong>：从话题接收到的消息对象。</li>
+<li><strong><code>auto</code></strong>：自动类型推导。编译器会自动把它推导为 <code>const boost::shared_ptr&lt;const geometry_msgs::PoseStamped&gt;&amp;</code>。</li>
+<li><strong><code>&amp;</code></strong>：引用传递，避免拷贝数据，提高效率。</li>
+</ul>
+</li>
+<li><strong><code>{ goalCB(goal); }</code> (函数体)</strong>：<ul>
+<li><strong>含义</strong>：具体的逻辑。</li>
+<li><strong>作用</strong>：它只是一个“二传手”。当收到消息 <code>goal</code> 时，它不做处理，直接把消息转发给当前类的成员函数 <code>goalCB</code> 去处理。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="ROS插件系统"><a href="#ROS插件系统" class="headerlink" title="ROS插件系统"></a>ROS插件系统</h1><p>ROS 插件系统（主要基于 <code>pluginlib</code>）是一种用于在运行时动态加载或卸载软件模块的机制。它允许开发者编写符合特定接口的代码，并将其编译成独立的库，而不需要修改主程序的源代码。</p>
+<h2 id="概念：解耦与扩展"><a href="#概念：解耦与扩展" class="headerlink" title="概念：解耦与扩展"></a>概念：解耦与扩展</h2><p>插件系统的核心目的是将<strong>接口定义</strong>与<strong>具体实现</strong>分离。</p>
+<ul>
+<li><strong>主程序</strong>：只定义接口（基类），不关心具体算法是谁写的，也不关心具体算法是怎么实现的。</li>
+<li><strong>插件</strong>：实现了主程序定义的接口，包含具体的算法逻辑。</li>
+</ul>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p>四要素：</p>
+<ol>
+<li><p>插件类（C++ 代码）</p>
+<ul>
+<li>开发者编写一个 C++ 类，继承自主程序定义的基类（例如 <code>nav_core::BaseGlobalPlanner</code>）。</li>
+<li>必须实现基类中定义的所有纯虚函数（如 <code>makePlan</code>, <code>initialize</code>）。</li>
+</ul>
+</li>
+<li><p>插件导出宏（C++ 代码）</p>
+<ul>
+<li>在插件的 <code>.cpp</code> 文件中，必须使用特殊的宏将这个类注册到插件系统中。</li>
+<li>例如：<code>PLUGINLIB_EXPORT_CLASS(MyPlanner, nav_core::BaseGlobalPlanner)</code></li>
+<li>这个宏的作用是告诉编译器：把这个类的信息导出，让 <code>pluginlib</code> 能在运行时找到它。</li>
+</ul>
+</li>
+<li><p>插件描述文件（XML）</p>
+<ul>
+<li><p>一个 XML 文件（通常命名为 <code>pluginlib.xml</code>），它充当了“注册表”的角色。</p>
+</li>
+<li><p>它描述了插件的名字、类型、基类类型以及所在的库文件名。</p>
+</li>
+<li><p>例如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">library</span> <span class="attr">path</span>=<span class="string">&quot;lib/libmy_planner_lib&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">&quot;my_pkg/MyPlanner&quot;</span> <span class="attr">type</span>=<span class="string">&quot;my_pkg::MyPlanner&quot;</span> <span class="attr">base_class_type</span>=<span class="string">&quot;nav_core::BaseGlobalPlanner&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>This is my custom planner.<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">library</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p>包导出配置（package.xml）</p>
+<ul>
+<li><p>在插件的 <code>package.xml</code> 文件中，需要指明上述 XML 文件的位置。</p>
+</li>
+<li><p>例如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">export</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">nav_core</span> <span class="attr">plugin</span>=<span class="string">&quot;$&#123;prefix&#125;/pluginlib.xml&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">export</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当 ROS 环境构建索引时，就能知道这个包提供了一个导航规划插件。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="运行流程"><a href="#运行流程" class="headerlink" title="运行流程"></a>运行流程</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pluginlib/class_loader.hpp&gt;</span></span></span><br><span class="line">pluginlib::ClassLoader&lt;nav_core::BaseLocalPlanner&gt; blp_loader_; <span class="comment">// Base Local Planner本地路径规划器插件加载器</span></span><br><span class="line">tc_ = blp_loader_.<span class="built_in">createInstance</span>(local_planner);</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>读取参数</strong>：从参数服务器读取字符串（如 <code>&quot;dwa_local_planner/DWAPlannerROS&quot;</code>）。</li>
+<li><strong>查找索引</strong>：<code>pluginlib</code> 在 ROS 系统中查找哪个包的 XML 文件里注册了这个名字。</li>
+<li><strong>定位库文件</strong>：找到对应的动态链接库（<code>.so</code> 文件）。</li>
+<li><strong>动态加载</strong>：操作系统将该库加载到内存中。</li>
+<li><strong>实例化</strong>：调用库中的类工厂，创建对象，并返回指向基类的指针。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://bytebotxplorer.github.io">ByteBotXplorer</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://bytebotxplorer.github.io/posts/ee5fce82/">https://bytebotxplorer.github.io/posts/ee5fce82/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ROS/">ROS</a></div><div class="post-share"><div class="social-share" data-image="/imgs/GEM/gem1.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/df6a2f29/" title="匿名函数"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">匿名函数</div></div><div class="info-2"><div class="info-item-1">WhatC++中的匿名函数，也称为Lambda表达式，一种可以定义在表达式上下文中的函数对象。没有明确的名称，是由一个特殊的语法表示。通常用于简化代码，尤其在需要传递函数作为参数或创建临时函数对象时。 语法12// [捕获列表](参数列表) -&gt; 返回值类型 &#123; 函数体 &#125;[capture](parameters) -&gt; return_type &#123;body&#125;     组件 作用     捕获列表 [] 捕获当前作用域的变量（值 / 引用 / 隐式捕获），C+...</div></div></div></a><a class="pagination-related" href="/posts/8eca029/" title="Boost库"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">Boost库</div></div><div class="info-2"><div class="info-item-1">互斥锁</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/246ed029/" title="ROS 插件"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2026-07-10</div><div class="info-item-2">ROS 插件</div></div><div class="info-2"><div class="info-item-1">将动态链接库.so注册成插件的链条：  C++ 代码中声明：在 realsense_node_factory.cpp 底部使用宏 PLUGINLIB_EXPORT_CLASS(realsense2_camera::RealSenseNodeFactory, nodelet::Nodelet)，在 .so 内部打下标记。  XML 文件中索引：nodelet_plugins.xml 将标记暴露给 ROS 系统。  package.xml 中导出：在 package.xml 中必须有 &lt;export&gt;...</div></div></div></a><a class="pagination-related" href="/posts/1d4b61cb/" title="ROS基础概念——launch文件"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2026-07-10</div><div class="info-item-2">ROS基础概念——launch文件</div></div><div class="info-2"><div class="info-item-1">实现原理 进程管理 ：roslaunch 解析 XML 文件，根据&lt;node&gt;标签启动相应的可执行文件。 参数服务器：&lt;param&gt; 标签将键值对加载到 ROS 参数服务器中，节点启动时通过 getParam 读取这些配置（如 IP、端口、阈值）。   &lt;arg&gt;：局部参数声明 作用：定义只能在当前 launch 文件内使用的变量，类似于脚本语言的局部变量。 语法：&lt;arg name=&quot;enable_rviz&quot; default=&quot;true...</div></div></div></a><a class="pagination-related" href="/posts/b905b4f6/" title="URDF"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2026-07-10</div><div class="info-item-2">URDF</div></div><div class="info-2"><div class="info-item-1"> Unified Robot Description Format，统一机器人描述格式 本质上是一个 XML 文件，用来描述一个机器人长什么样、有哪些连杆、关节怎么连接、每个零件的位置姿态、质量惯量、碰撞模型、可视化模型等。 在ROS中，URDF常用于：  在 RViz 中显示机器人模型  给 TF 系统提供机器人各个 link 的坐标关系  给 Gazebo 做仿真模型基础  给 MoveIt 做运动规划模型  让 robot_state_publisher 根据 joint_states 发布机器人 TF...</div></div></div></a><a class="pagination-related" href="/posts/b654ab75/" title="卡尔曼滤波"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2026-07-10</div><div class="info-item-2">卡尔曼滤波</div></div><div class="info-2"><div class="info-item-1"> 【卡尔曼滤波器】1_递归算法_Recursive Processing   </div></div></div></a><a class="pagination-related" href="/posts/251a0d11/" title="catkin"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2026-03-22</div><div class="info-item-2">catkin</div></div><div class="info-2"><div class="info-item-1">Catkincatkin是ROS的构建系统、工具集（类似于 Linux 下的 Make，Java 的 Maven，或者 Python 的 setuptools）。  名字来源于一种多刺的家猫尾巴上的毛丛（Kinkajou 的尾巴），寓意是“像编织一样把很多包组合在一起”。   是基于标准的CMake构建出来的，是对标准CMake构建系统的一层封装和扩展。增加了一些针对Python、消息定义和服务定义的自动化处理逻辑。 当在终端输入catkin_make或colcon build时，就是在调用这套构建系统 目的...</div></div></div></a><a class="pagination-related" href="/posts/77701ccd/" title="ROS通信机制"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2026-03-13</div><div class="info-item-2">ROS通信机制</div></div><div class="info-2"><div class="info-item-1">RPCRPC（Remote Procedure Call，远程过程调用）：让本地程序像调用「本地函数」一样，调用另一台机器上的程序里的函数 / 方法，不用关心底层的网络传输、数据编码 / 解码等细节。  为什么ROS需要RPC？ ROS 是分布式系统（节点可能跑在不同电脑上），而 Master 要和所有节点通信：  跨语言：ROS 支持 C++、Python 等多种语言，RPC 能让不同语言写的节点（C++ 节点、Python 节点）都能和 Python 写的 Master 通信； 简单轻量：ROS 1 用的...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%A5%E6%9F%84"><span class="toc-number">1.</span> <span class="toc-text">句柄</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E9%80%94"><span class="toc-number">1.2.</span> <span class="toc-text">用途</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E5%8F%82%E6%95%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%8F%82%E6%95%B0"><span class="toc-number">1.3.</span> <span class="toc-text">从参数服务器中读取参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.4.</span> <span class="toc-text">通信连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#advertise"><span class="toc-number">1.4.1.</span> <span class="toc-text">advertise</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#nh-advertise-lt-gt-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">nh.advertise&lt;...&gt;(...) (函数调用)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lt-geometry-msgs-Twist-gt-%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">&lt;geometry_msgs::Twist&gt; (模板参数)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#quot-cmd-vel-quot-1-%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">(&quot;cmd_vel&quot;, 1) (函数参数)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subscribe"><span class="toc-number">1.4.2.</span> <span class="toc-text">subscribe</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ROS%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.</span> <span class="toc-text">ROS插件系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%EF%BC%9A%E8%A7%A3%E8%80%A6%E4%B8%8E%E6%89%A9%E5%B1%95"><span class="toc-number">2.1.</span> <span class="toc-text">概念：解耦与扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">2.2.</span> <span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">2.3.</span> <span class="toc-text">运行流程</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By ByteBotXplorer</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="external nofollow noopener noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></span></div><div class="footer_custom_text">Robotics, SLAM, Math, Code.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Toggle Between Traditional and Simplified Chinese">繁</button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><script src="/js/tw_cn.js?v=5.5.3"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.7/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zindex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="输入关键词…" type="text"></div><hr><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.3"></script></div></div></body></html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>SLAM主流算法 | bytebot的blog</title><meta name="author" content="ByteBotXplorer"><meta name="copyright" content="ByteBotXplorer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="深度科普：盘点机器人常用的几大主流SLAM算法-23年文章   SLAM 通用架构mindmap root)SLAM( 	二维激光SLAM 		Cartographer 		Karto 	三维激光SLAM 		LIO-SAM（Lidar-Inertial Odometry via Smoothing And Mapping） 		LOAM（Lidar Odometry And Mapping）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SLAM主流算法">
+<meta property="og:url" content="https://bytebotxplorer.github.io/posts/8386f101/index.html">
+<meta property="og:site_name" content="bytebot的blog">
+<meta property="og:description" content="深度科普：盘点机器人常用的几大主流SLAM算法-23年文章   SLAM 通用架构mindmap root)SLAM( 	二维激光SLAM 		Cartographer 		Karto 	三维激光SLAM 		LIO-SAM（Lidar-Inertial Odometry via Smoothing And Mapping） 		LOAM（Lidar Odometry And Mapping）">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://bytebotxplorer.github.io/imgs/GEM/gem1.png">
+<meta property="article:published_time" content="2026-04-03T01:32:05.000Z">
+<meta property="article:modified_time" content="2026-07-10T10:19:10.313Z">
+<meta property="article:author" content="ByteBotXplorer">
+<meta property="article:tag" content="SLAM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bytebotxplorer.github.io/imgs/GEM/gem1.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SLAM主流算法",
+  "url": "https://bytebotxplorer.github.io/posts/8386f101/",
+  "image": "https://bytebotxplorer.github.io/imgs/GEM/gem1.png",
+  "datePublished": "2026-04-03T01:32:05.000Z",
+  "dateModified": "2026-07-10T10:19:10.313Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "ByteBotXplorer",
+      "url": "https://bytebotxplorer.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://bytebotxplorer.github.io/posts/8386f101/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.7/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#131416')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SLAM主流算法',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/gymnasium-minimal.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body><div class="bg-animation" id="web_bg" style="background-color: #ffffff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/imgs/GEM/gem1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">44</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">34</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><!-- 左侧博客信息区域--><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">bytebot的blog</span></a><a class="nav-page-title" href="/"><span class="site-name">SLAM主流算法</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">SLAM主流算法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-04-03T01:32:05.000Z" title="Created 2026-04-03 09:32:05">2026-04-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-10T10:19:10.313Z" title="Updated 2026-07-10 18:19:10">2026-07-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/SLAM/">SLAM</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>3mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id data-flag-title><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-07-10 18:19:10&quot;}" hidden></div><blockquote>
+<ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://zhuanlan.zhihu.com/p/614769897">深度科普：盘点机器人常用的几大主流SLAM算法-23年文章</a></li>
+</ul>
+</blockquote>
+<h1 id="SLAM-通用架构"><a href="#SLAM-通用架构" class="headerlink" title="SLAM 通用架构"></a>SLAM 通用架构</h1><pre><code class="highlight mermaid">mindmap
+root)SLAM(
+	二维激光SLAM
+		Cartographer
+		Karto
+	三维激光SLAM
+		LIO-SAM（Lidar-Inertial Odometry via Smoothing And Mapping）
+		LOAM（Lidar Odometry And Mapping）系列
+	视觉SLAM
+		ORB-SLAM3
+		VINS-Fusion</code></pre>
+<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><p>从传感器中获取原始数据，并将这些数据与已有地图进行关联，从而确定机器人轨迹的过程。</p>
+<ul>
+<li>数据采集：通过传感器获取机器人周围环境的数据，如激光点云数据、图像数据等。</li>
+<li>数据时空同步：将从不同传感器或不同时间戳接收到的数据进行同步，以便后续配准。</li>
+<li>特征提取：从采集的数据中提取用于建图的特征点，如关键点、特征描述子等。</li>
+<li>数据融合：将不同传感器获取的数据融合起来，提高建图的准确性和稳定性。</li>
+<li>数据关联：将当前帧的特征与之前的地图，或者其他帧之间的特征进行匹配，以确定机器人的运动轨迹。</li>
+<li>运动估计：通过数据关联得到机器人的运动轨迹，可以是平移、旋转等运动。</li>
+</ul>
+<p><strong>前端的质量对SLAM系统的准确性及稳定性有着至关重要的影响，因此前端的算法设计和实现需要精心制定，以确保系统的可靠性和实用性。</strong></p>
+<h2 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h2><p>根据前端获取的运动轨迹和地图信息，对机器人的状态、地图和传感器误差等进行估计和优化的过程。</p>
+<ul>
+<li>非线性优化：通过非线性最小二乘法等，对机器人姿态和地图进行优化，使得机器人的位置和地图更加准确。</li>
+<li>回环检测：识别机器人经过的相似位置，避免累积误差的产生。可以有效降低机器人的定位误差，提高SLAM算法的精度和鲁棒性。</li>
+</ul>
+<p>后端优化的关键，是对整个系统的运动轨迹和地图进行全局优化，以消除积累误差和提高定位的准确性。</p>
+<h2 id="Cartographer"><a href="#Cartographer" class="headerlink" title="Cartographer"></a>Cartographer</h2><p>由谷歌开发的一款基于激光雷达和RGB-D相机数据的SLAM算法。</p>
+<p>支持Lidar、IMU、Odemetry、GPS、Landmark等多种传感器配置，被广泛用于机器人导航、自动驾驶等领域。</p>
+<p><img src="https://pic1.zhimg.com/v2-9b17669375bd0d8ea169b7d20dd11b4a_1440w.jpg" alt="img"></p>
+<h2 id="Karto"><a href="#Karto" class="headerlink" title="Karto"></a>Karto</h2><p>一种基于位姿图优化的SLAM方法，使用了高度优化和非迭代的cholesky矩阵对系统进行解耦并求解。适用于各种室内环境，可以处理静态和动态障碍物。</p>
+<p><img src="https://pic4.zhimg.com/v2-3e53c5f0cdf5e7c9d5143536c3404671_1440w.jpg" alt="img"></p>
+<p>Karto使用图论的标准形式表示地图，其中每个节点代表了移动机器人运行轨迹上的一个位姿点，以及当前位姿下传感器返回的感知信息。</p>
+<p>节点之间的边，代表了相邻机器人位姿之间的位移矢量。对每一个新的位姿点定位，需要节点间匹配关系和边带来的约束，保持定位估计误差的前后一致。</p>
+<h2 id="LIO-SAM"><a href="#LIO-SAM" class="headerlink" title="LIO-SAM"></a>LIO-SAM</h2><p><img src="https://pica.zhimg.com/v2-d449e97e025bac6fe2ae6ca801e00c70_1440w.jpg" alt="img"></p>
+<p>前端在传统的LIDAR-SLAM基础上，利用卡尔曼滤波和因子图优化算法，将激光雷达和IMU数据融合，进一步提高机器人的定位精度和建图效果。后端加入优化算法，使得机器人的定位精度和建图精度都得到极大提升。</p>
+<h2 id="LOAM"><a href="#LOAM" class="headerlink" title="LOAM"></a>LOAM</h2><p>LOAM使用3D激光雷达的数据来进行建图和定位，利用点云数据的特征，如空间聚类、连续性约束等来估计位姿。</p>
+<p><img src="https://picx.zhimg.com/v2-631f0812fec919e638c4e4e0cbb99f4d_1440w.jpg" alt="LOAM系统架构"></p>
+<p>LOAM-Velodyne则使用Velodyne激光雷达的3D点云数据，以实现更高精度的地图重建和定位；LOAM-LiDAR采用LiDAR传感器来进行建图和定位，可以高效获取目标物体的三维坐标信息，在一些机器人应用场景具有很大的优势。</p>
+<h2 id="ORB-SLAM3"><a href="#ORB-SLAM3" class="headerlink" title="ORB-SLAM3"></a>ORB-SLAM3</h2><p>支持单目、双目、RBG-D等多种相机模式，在特征提取、关键帧选取、地图维护、位姿优化等方面进行了优化，并能建立短期、中期和长期的数据关联，使得该系统兼具精度和鲁棒性。</p>
+<p>前端视觉里程计基于ORB特征，建立图像帧之间特征点的数据关联，以及图像特征点和地图点之间3D到2D的数据关联，具有较好的鲁棒性和提取效率，回环检测和重定位也基于ORB特征实现。</p>
+<p><img src="https://pic3.zhimg.com/v2-853386221b7071d4e5631332e462b83e_1440w.jpg" alt="img"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://bytebotxplorer.github.io">ByteBotXplorer</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://bytebotxplorer.github.io/posts/8386f101/">https://bytebotxplorer.github.io/posts/8386f101/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SLAM/">SLAM</a></div><div class="post-share"><div class="social-share" data-image="/imgs/GEM/gem1.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/d4fa5225/" title="SLAM中的耦合"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">SLAM中的耦合</div></div><div class="info-2"><div class="info-item-1">在SLAM中，“耦合”（Coupling）指的是不同模块或变量之间的相互影响和依赖关系。</div></div></div></a><a class="pagination-related" href="/posts/213e620d/" title="里程计"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">里程计</div></div><div class="info-2"><div class="info-item-1">  小鱼学习笔记：VO是个啥？一文带你了解视觉里程计   什么是里程计flowchart LR 	ID1[传感器数据] ---&gt; |输入| ID2[里程估计Odometry] ---&gt; |输出| ID3[机器人位姿变化（位置+角度）] 里程计就是通过传感器信息来推算机器人位姿变化。 当知道初始位置，通过不断叠加里程计，可以计算出当前的位姿。 里程计是 读取传感器数据 → 计算相对位姿的软件算法模块 分类目前主要两种：  基于机器人运动感知，结合机器人运动学模型计算。如：编码器和IMU。  基于环境...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/bf0b13f/" title="SLAM建图"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2026-03-20</div><div class="info-item-2">SLAM建图</div></div><div class="info-2"><div class="info-item-1">体素滤波（Voxel Grid Filter）核心原理 划分体素网络 把三维点云所在的空间，按照设定的体素大小（比如 1cm×1cm×1cm、5cm×5cm×5cm），划分成无数个大小相同的立方体（体素）。  体素越小，保留的细节越多，但降采样效果越弱；  体素越大，降采样越明显，但可能丢失小细节（比如细小的栏杆）。    每个体素内选代表点 遍历所有点云，把每个点归类到对应的体素中；然后对每个体素内的所有点，计算一个 “代表点”（三种常用方式）： | 选点方式       | 特点             ...</div></div></div></a><a class="pagination-related" href="/posts/17aca24f/" title="SLAM地图"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2026-07-10</div><div class="info-item-2">SLAM地图</div></div><div class="info-2"><div class="info-item-1">高程地图高程地图（Elevation Map），2.5D地图。 栅格地图：平坦地面，二维场景； 体素地图：无人机三维场景； 高程地图：无人车在非平坦路面运行  本质是一个二维网格地图，每个格子存储“该位置的地面高度”。 123456789俯视图：y↑|  [0.02] [0.03] [0.04] [0.05]|  [0.01] [0.02] [0.03] [0.07]|  [0.00] [0.01] [0.05] [0.12]|  [0.00] [0.00] [0.03] [0.20]+-----------...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SLAM-%E9%80%9A%E7%94%A8%E6%9E%B6%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">SLAM 通用架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF"><span class="toc-number">1.1.</span> <span class="toc-text">前端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF"><span class="toc-number">1.2.</span> <span class="toc-text">后端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cartographer"><span class="toc-number">1.3.</span> <span class="toc-text">Cartographer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Karto"><span class="toc-number">1.4.</span> <span class="toc-text">Karto</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LIO-SAM"><span class="toc-number">1.5.</span> <span class="toc-text">LIO-SAM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LOAM"><span class="toc-number">1.6.</span> <span class="toc-text">LOAM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORB-SLAM3"><span class="toc-number">1.7.</span> <span class="toc-text">ORB-SLAM3</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By ByteBotXplorer</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="external nofollow noopener noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></span></div><div class="footer_custom_text">Robotics, SLAM, Math, Code.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Toggle Between Traditional and Simplified Chinese">繁</button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><script src="/js/tw_cn.js?v=5.5.3"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.7/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zindex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="输入关键词…" type="text"></div><hr><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.3"></script></div></div></body></html>

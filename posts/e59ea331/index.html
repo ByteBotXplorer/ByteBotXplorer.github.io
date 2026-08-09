@@ -1,0 +1,366 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>惯性力、离心力与科里奥利力 | bytebot的blog</title><meta name="author" content="ByteBotXplorer"><meta name="copyright" content="ByteBotXplorer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="【中配】从零开始理解科氏力，地转偏向力（科里奥利力）- ScienceClic English 详细数理推导【科里奥利力】与【地转偏向力】     参考系一切运动都是相对的，如何描述一个物体的运动，需要选定一个“观察站”，即参考系。 任何参考系在原则上都可以被选择，没有“绝对正确”的参考系。 惯性系惯性系是牛顿第一定律（惯性定律）严格成立的参考系。在这种参考系中，一个不受外力（或合力为0）的物">
+<meta property="og:type" content="article">
+<meta property="og:title" content="惯性力、离心力与科里奥利力">
+<meta property="og:url" content="https://bytebotxplorer.github.io/posts/e59ea331/index.html">
+<meta property="og:site_name" content="bytebot的blog">
+<meta property="og:description" content="【中配】从零开始理解科氏力，地转偏向力（科里奥利力）- ScienceClic English 详细数理推导【科里奥利力】与【地转偏向力】     参考系一切运动都是相对的，如何描述一个物体的运动，需要选定一个“观察站”，即参考系。 任何参考系在原则上都可以被选择，没有“绝对正确”的参考系。 惯性系惯性系是牛顿第一定律（惯性定律）严格成立的参考系。在这种参考系中，一个不受外力（或合力为0）的物">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://bytebotxplorer.github.io/imgs/GEM/gem1.png">
+<meta property="article:published_time" content="2026-04-05T03:25:24.000Z">
+<meta property="article:modified_time" content="2026-07-10T10:19:10.317Z">
+<meta property="article:author" content="ByteBotXplorer">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="SLAM">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bytebotxplorer.github.io/imgs/GEM/gem1.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "惯性力、离心力与科里奥利力",
+  "url": "https://bytebotxplorer.github.io/posts/e59ea331/",
+  "image": "https://bytebotxplorer.github.io/imgs/GEM/gem1.png",
+  "datePublished": "2026-04-05T03:25:24.000Z",
+  "dateModified": "2026-07-10T10:19:10.317Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "ByteBotXplorer",
+      "url": "https://bytebotxplorer.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://bytebotxplorer.github.io/posts/e59ea331/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.7/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#131416')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '惯性力、离心力与科里奥利力',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/gymnasium-minimal.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body><div class="bg-animation" id="web_bg" style="background-color: #ffffff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/imgs/GEM/gem1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">44</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">34</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><!-- 左侧博客信息区域--><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">bytebot的blog</span></a><a class="nav-page-title" href="/"><span class="site-name">惯性力、离心力与科里奥利力</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">惯性力、离心力与科里奥利力</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-04-05T03:25:24.000Z" title="Created 2026-04-05 11:25:24">2026-04-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-10T10:19:10.317Z" title="Updated 2026-07-10 18:19:10">2026-07-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>4mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id data-flag-title><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-07-10 18:19:10&quot;}" hidden></div><blockquote>
+<ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.bilibili.com/video/BV1f8vyBVEL9?vd_source=59c9078be8272e804fcbbcf1da9a9f94">【中配】从零开始理解科氏力，地转偏向力（科里奥利力）- ScienceClic English</a></li>
+<li><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.bilibili.com/video/BV179ATz3EzZ?vd_source=59c9078be8272e804fcbbcf1da9a9f94">详细数理推导【科里奥利力】与【地转偏向力】</a></p>
+</li>
+<li></li>
+</ul>
+</blockquote>
+<h1 id="参考系"><a href="#参考系" class="headerlink" title="参考系"></a>参考系</h1><p>一切运动都是相对的，如何描述一个物体的运动，需要选定一个“观察站”，即<strong>参考系</strong>。</p>
+<p>任何参考系在原则上都可以被选择，没有“绝对正确”的参考系。</p>
+<h2 id="惯性系"><a href="#惯性系" class="headerlink" title="惯性系"></a>惯性系</h2><p><strong>惯性系</strong>是牛顿第一定律（惯性定律）严格成立的参考系。在这种参考系中，一个不受外力（或合力为0）的物体将保持静止或迅速直线运动状态。</p>
+<p>在惯性系中，看到的物理规律呈现出最简单、最普适的形式。</p>
+<p>近似惯性系：</p>
+<ul>
+<li><p>地面参考系：对于日常短时、小范围问题，地球自转影响很小，可视为近似惯性系。<strong>最常用</strong></p>
+</li>
+<li><p><strong>地心惯性系</strong>：原点在地心，坐标轴指向遥远恒星。用于卫星轨道计算。</p>
+</li>
+<li><strong>日心惯性系</strong>：原点在太阳中心，坐标轴指向遥远恒星。用于研究太阳系行星运动。</li>
+</ul>
+<p>牛顿第二定律在惯性系中成立，即 $F = ma$。</p>
+<h2 id="非惯性系"><a href="#非惯性系" class="headerlink" title="非惯性系"></a>非惯性系</h2><p><strong>非惯性系</strong>是相对于某个惯性系有加速度的参考系。</p>
+<p>场景：</p>
+<ul>
+<li><strong>急刹车的公交车</strong>：你感觉被向前“甩”。</li>
+<li><strong>转弯的汽车</strong>：你感觉被向外侧“甩”。</li>
+<li><strong>加速上升的电梯</strong>：你感觉身体变“重”。</li>
+<li><strong>我们脚下的地球（严格来说）</strong>：它在自转，有向心加速度。</li>
+</ul>
+<p>在非惯性系中，一个不受真实外力的物体，可能会做加速运动，违反了牛顿第一定律，物理规律失效了？</p>
+<p>“环境”发生改变，为了在非惯性系中继续使用牛顿定律，引入新的<em>假想的</em>力，即<strong>惯性力</strong>。</p>
+<p><strong>惯性力性质</strong>：</p>
+<ul>
+<li><strong>非实体性</strong>：没有施力物体，不源于任何相互作用。</li>
+<li><strong>源于参考系本身的加速度</strong></li>
+<li><strong>惯性力 = 物体速度 * 非惯性系本身加速度，方向与该加速度相反</strong></li>
+</ul>
+<h1 id="惯性力"><a href="#惯性力" class="headerlink" title="惯性力"></a>惯性力</h1><p><strong>惯性力</strong>：当物体有加速度时，物体具有的惯性会使物体有保持原有运动状态的倾向，而此时若以研究对象为参考系，并在该参考系上建立坐标系，看起来就仿佛有一股方向相反的力作用在研究对象上令研究对象在坐标系内发生位移。</p>
+<p>惯性力是一种虚拟力（假想力），并非由物体之间的相互作用产生，而是为了使牛顿运动定律在非惯性参考系中仍然适用而引入的概念</p>
+<h2 id="离心力"><a href="#离心力" class="headerlink" title="离心力"></a>离心力</h2><p><strong>在旋转参考系（惯性系）中，为使物体保持相对静止，所需假想的、方向沿半径向外的力。</strong></p>
+<p><u>在圆盘上，你会感觉有股力量把你推向边缘。要站在原地，你必须抓住栏杆（提供向内的真实力来对抗这个假想的离心力）。</u></p>
+<p>从惯性系视角：根本不存在“离心力”。你之所以有向外运动的趋势，是因为你的身体具有<strong>惯性</strong>，想要保持原来的切线方向直线运动，是圆盘的边缘（栏杆）给了你一个<strong>向内的真实力（向心力）</strong>，迫使你跟着圆盘转圈。</p>
+<h2 id="科里奥利力"><a href="#科里奥利力" class="headerlink" title="科里奥利力"></a>科里奥利力</h2><p><strong>在旋转参考系（惯性系）中，当一个物体相对于该参考系运动时，所感受到的一种垂直于其运动方向的惯性力。</strong></p>
+<p><u>如果你在旋转的圆盘上，试图沿半径向中心走直线，你会发现自己走偏了，轨迹是一条向外弯曲的弧线。从圆盘上看，就好像有股侧向力在推你。</u></p>
+<p><strong>惯性系视角（圆盘外静止看）</strong>：物体本身在做<strong>匀速直线运动</strong>（惯性）。但由于圆盘在转动，站在圆盘上的人自己也在横向移动，因此他看到的物体轨迹自然就是弯曲的。<strong>没有额外的“力”</strong>。</p>
+<ul>
+<li><p><strong>地转偏向力</strong>是<strong>科里奥利力</strong>在地球表面该点切平面分量</p>
+</li>
+<li><p><strong>河流侵蚀</strong>：北半球河流对<strong>右岸</strong>的侵蚀通常更严重（如俄罗斯的伏尔加河）。</p>
+</li>
+<li><p><strong>炮弹落点</strong>：远程火炮射击必须修正科里奥利力影响。</p>
+</li>
+</ul>
+<h3 id="地转偏向力"><a href="#地转偏向力" class="headerlink" title="地转偏向力"></a>地转偏向力</h3><ul>
+<li><strong>惯性系</strong>：地心惯性系。原点是地球质心，坐标轴指向遥远恒星。</li>
+<li><strong>非惯性系</strong>：地球参考系（自传参考系）</li>
+</ul>
+<p><strong>地转偏向力，就是科里奥利力（Coriolis force）在地球表面当地水平面上的分量。</strong></p>
+<p>在非惯性（地球）中引入科里奥利力，是为了抵消参考系（地球）旋转带来的两种效应，物体在惯性系（地心惯性系）中真实加速度：</p>
+<ul>
+<li>向心加速度：由于物体随地球自传做圆周运动而产生，方向指向地轴，这部分由离心惯性力来抵消；</li>
+<li><strong>科里奥利加速度</strong>：当物体相对于地球运动$v$时，其在惯性系中的轨迹是一条复杂曲线。这个曲线运动产生的、垂直于$v$的加速度分量，就是科里奥利加速度</li>
+</ul>
+<p>科里奥利力(科氏力)，$F_c = 2m(v \times \omega)$：</p>
+<ul>
+<li>$\omega$：地球自转角速度矢量，方向沿自转轴指向北极</li>
+<li>$v$：物体相对地球参考系的速度</li>
+</ul>
+<p>科氏力分解到地表：</p>
+<ul>
+<li><p>垂直分量：影响甚微，通常合并到表现重力中</p>
+</li>
+<li><p>水平分量：即<strong>地转偏向力</strong>，总是垂直于物体的相对运动方向$v$，导致其路径在北半球右偏，南半球左偏</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://bytebotxplorer.github.io">ByteBotXplorer</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://bytebotxplorer.github.io/posts/e59ea331/">https://bytebotxplorer.github.io/posts/e59ea331/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/imgs/GEM/gem1.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/213e620d/" title="里程计"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">里程计</div></div><div class="info-2"><div class="info-item-1">  小鱼学习笔记：VO是个啥？一文带你了解视觉里程计   什么是里程计flowchart LR 	ID1[传感器数据] ---&gt; |输入| ID2[里程估计Odometry] ---&gt; |输出| ID3[机器人位姿变化（位置+角度）] 里程计就是通过传感器信息来推算机器人位姿变化。 当知道初始位置，通过不断叠加里程计，可以计算出当前的位姿。 里程计是 读取传感器数据 → 计算相对位姿的软件算法模块 分类目前主要两种：  基于机器人运动感知，结合机器人运动学模型计算。如：编码器和IMU。  基于环境...</div></div></div></a><a class="pagination-related" href="/posts/3a870f7c/" title="流形"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">流形</div></div><div class="info-2"><div class="info-item-1">  最美数学系列 — 什么是微分流形 1 最美数学系列 — 什么是微分流形 2：切向量和切空间   流形（Manifold）是一种特殊的、具有局部欧几里得性质的抽象拓扑空间 它的每一个局部（开集），都可以通过一个映射（同胚），对应到一个 N维欧式空间。 基础概念同胚假设有两个拓扑空间 $X$ 和 $Y$ 。如果存在一个函数 $f:X→Y$ ，满足以下三个条件，我们就说 $X$ 和 $Y$  是同胚的：  双射： $X$ 中的每一个点都对应 $Y$ 中唯一的一个点（一一对应，不多不少）。 连续：$X$ 中邻近的...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E7%B3%BB"><span class="toc-number">1.</span> <span class="toc-text">参考系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%83%AF%E6%80%A7%E7%B3%BB"><span class="toc-number">1.1.</span> <span class="toc-text">惯性系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E6%83%AF%E6%80%A7%E7%B3%BB"><span class="toc-number">1.2.</span> <span class="toc-text">非惯性系</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%83%AF%E6%80%A7%E5%8A%9B"><span class="toc-number">2.</span> <span class="toc-text">惯性力</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%BB%E5%BF%83%E5%8A%9B"><span class="toc-number">2.1.</span> <span class="toc-text">离心力</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%91%E9%87%8C%E5%A5%A5%E5%88%A9%E5%8A%9B"><span class="toc-number">2.2.</span> <span class="toc-text">科里奥利力</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E8%BD%AC%E5%81%8F%E5%90%91%E5%8A%9B"><span class="toc-number">2.2.1.</span> <span class="toc-text">地转偏向力</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By ByteBotXplorer</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="external nofollow noopener noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></span></div><div class="footer_custom_text">Robotics, SLAM, Math, Code.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Toggle Between Traditional and Simplified Chinese">繁</button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><script src="/js/tw_cn.js?v=5.5.3"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.7/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zindex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="输入关键词…" type="text"></div><hr><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.3"></script></div></div></body></html>
